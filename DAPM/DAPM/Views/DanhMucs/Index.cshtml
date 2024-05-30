@@ -1,0 +1,86 @@
+﻿@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<DAPM.Models.TbDanhMuc>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="header-title">
+        <h2>Quản lý danh mục</h2>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search">
+        <img src="/img/search.png" alt="Search" style="width: 15px;">
+    </div>
+    <div class="user-info">
+        <div class="user-section">
+            <img src="/img/user.png" alt="User" style="width: 24px;">
+            <span>Admin</span>
+        </div>
+        <div class="notification-section">
+            <img src="/img/notifi.png" alt="Notifications" style="width: 24px;">
+            <span class="notification-badge">1</span>
+            <!-- <div class="notification-badge"></div>  -->
+        </div>
+        <div class="settings-section">
+            <img src="/img/setting.png" alt="Settings" style="width: 24px;">
+        </div>
+    </div>
+</div>
+<div class="table-header">
+    <h1>DANH SÁCH DANH MỤC</h1>
+    <a asp-action="Create" asp-controller="DanhMucs" class="btn-add">
+        <i class="fa fa-plus me-2"></i> <span>Thêm mới</span>
+    </a>
+</div>
+<p>@TempData["Message"]</p>
+<table style="width=70%">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th style="width=200px">Tên danh mục</th>
+            <th>Mô tả</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var ind = 0;
+            foreach (var item in Model)
+            {
+
+                ind += 1;
+                var serialNumber = (Model.PageNumber - 1) * Model.PageSize + ind;
+                <tr>
+                    <td>@serialNumber</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenDanhMuc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MoTa)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="DanhMucs" asp-route-id="@item.IdDanhMuc" class="btn btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-controller="DanhMucs" asp-route-id="@item.IdDanhMuc" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div class="pagination">
+    <div class="hint-text">Showing <b>@Model.Count()</b> out of <b>@Model.PageSize</b> entries</div>
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            <li>
+                <a href="@Url.Action("Index", "DanhMucs", new { page = i})" class="page-link">@i</a>
+            </li>
+        }
+    </ul>
+</div>

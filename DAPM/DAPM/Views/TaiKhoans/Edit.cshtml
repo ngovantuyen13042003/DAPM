@@ -1,0 +1,214 @@
+﻿@model DAPM.Models.TbTaiKhoan
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="header">
+    <div class="header-title">
+        <h2>Quản lý tài khoản</h2>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search">
+        <img src="/img/search.png" alt="Search" style="width: 15px;">
+    </div>
+    <div class="user-info">
+        <div class="user-section">
+            <img src="/img/user.png" alt="User" style="width: 24px;">
+            <span>Admin</span>
+        </div>
+        <div class="notification-section">
+            <img src="/img/notifi.png" alt="Notifications" style="width: 24px;">
+            <span class="notification-badge">1</span>
+            <!-- <div class="notification-badge"></div>  -->
+        </div>
+        <div class="settings-section">
+            <img src="/img/setting.png" alt="Settings" style="width: 24px;">
+        </div>
+    </div>
+</div>
+<div class="table-header">
+    <h2>Cập nhật tài khoản</h2>
+</div>
+
+
+<form method="post" asp-action="Edit" asp-controller="TaiKhoans">
+
+    <div class="form-container">
+        <div class="form-horizontal">
+            <hr />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdTaiKhoan" />
+            <div class="form-group">
+                <label asp-for="TenDangNhap" class="control-label">Tên đăng nhập</label>
+                <div class="input-container">
+                    <input asp-for="TenDangNhap" class="form-control" required />
+                    <div class="error-message">
+                        <span asp-validation-for="TenDangNhap" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MatKhau" class="control-label">Mật khẩu</label>
+                <div class="input-container">
+                    <input asp-for="MatKhau" class="form-control" required />
+                    <div class="error-message">
+                        <span asp-validation-for="MatKhau" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Quyen" class="control-label">Quyền</label>
+                <div class="input-container">
+                    <select class="form-select" asp-for="Quyen">
+                        <option value="admin">admin</option>
+                        <option value="subadmin">subadmin</option>
+                        <option value="volunteer">volunteer</option>
+                        <option value="citizen">citizen</option>
+                    </select>
+                    <div class="error-message">
+                        <span asp-validation-for="Quyen" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="HoVaTen" class="control-label">Họ tên</label>
+                <div class="input-container">
+                    <input asp-for="HoVaTen" class="form-control" required />
+                    <div class="error-message">
+                        <span asp-validation-for="HoVaTen" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <div class="input-container">
+                    <input asp-for="Email" class="form-control" type="email" />
+                    <div class="error-message">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sdt" class="control-label">SDT</label>
+                <div class="input-container">
+                    <input asp-for="Sdt" class="form-control" type="tel" />
+                    <div class="error-message">
+                        <span asp-validation-for="Sdt" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaChi" class="control-label">Địa chỉ</label>
+                <div class="input-container">
+                    <input asp-for="DiaChi" class="form-control" type="text" />
+                    <div class="error-message">
+                        <span asp-validation-for="DiaChi" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenPhuong" class="control-label">Tên phường</label>
+                <div class="input-container">
+                    <input asp-for="TenPhuong" class="form-control" />
+                    <div class="error-message">
+                        <span asp-validation-for="TenPhuong" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="button-container">
+                    <input type="submit" value="Lưu" class="btn btn-addd" />
+                    <button href="@Url.Action("Index", "TaiKhoans")" type="button" class="btn btn-back">Quay lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<style>
+    h2 {
+        text-align: center;
+        width: auto;
+    }
+
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .form-horizontal {
+        width: 50%; /* Tùy chỉnh lại kích thước phù hợp */
+    }
+
+    .form-group {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .control-label {
+        margin-left: 10%;
+        text-align: start;
+        justify-content: start;
+    }
+
+    .input-container input, .input-container select {
+        height: 40px;
+    }
+
+    .input-container {
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .button-container {
+        text-align: center;
+        width: 100%;
+    }
+
+    .error-message {
+        margin-top: 5px;
+    }
+
+    .btn-addd {
+        background-color: #98E0FF;
+        color: black;
+        height: 40px;
+        width: 100px;
+        border: solid 1px black;
+        border-radius: 10px;
+    }
+
+        .btn-addd:hover {
+            background-color: lightgray;
+        }
+
+    .btn-back {
+        background-color: indianred;
+        color: black;
+        height: 40px;
+        width: 100px;
+        border: solid 1px black;
+        border-radius: 10px;
+    }
+
+        .btn-back:hover {
+            background-color: lightgray;
+        }
+</style>
+

@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DbLuLutHoaVangContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DAPM"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CDPM"));
 });
 
 var app = builder.Build();
@@ -29,6 +29,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}");
+    pattern: "{controller=TaiKhoans}/{action=Index}/{id?}");
 
 app.Run();

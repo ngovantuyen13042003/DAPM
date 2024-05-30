@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("b535736d-5418-4ae8-9969-d12caeb45ab9")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("DAPM")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51d9efced33ee84cb2875aae2f72273783dccbba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f3c8ac5168eb97e9851a90867ed1dc508787db2")]
 [assembly: System.Reflection.AssemblyProductAttribute("DAPM")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DAPM")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

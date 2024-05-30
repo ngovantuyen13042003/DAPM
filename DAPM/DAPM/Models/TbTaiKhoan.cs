@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DAPM.Models;
 
@@ -14,7 +15,7 @@ public partial class TbTaiKhoan
     public string Quyen { get; set; } = null!;
 
     public string? HoVaTen { get; set; }
-
+    
     public string? Email { get; set; }
 
     public string? Sdt { get; set; }

@@ -1,5 +1,5 @@
-﻿Create database dbLuLutHoaVang2
-drop database dbLuLutHoaVang2
+﻿drop database dbLuLutHoaVang2
+Create database dbLuLutHoaVang2
 go
 use dbLuLutHoaVang2
 go
