@@ -200,6 +200,7 @@ create table tbFile
 	on delete
 			cascade
 )
+go
 --tbTaiKhoan
 insert into tbTaiKhoan(tenDangNhap,matKhau,quyen,hoVaTen,email,sdt,diaChi,tenPhuong)
 values
@@ -210,6 +211,7 @@ values
 		('user5','12345','citizen',N'Nguyễn Văn E', 'VanE@gmail.com','0361239867',N'Quảng Trị',null)
 
 --tbDanhMuc
+go
 insert into tbDanhMuc(tenDanhMuc,moTa)
 values
 		(N'Thực phẩm',N'Thực phẩm dễ bảo quản và sử dụng như hạt, bột, gạo, mì ống, thịt đóng hộp, thực phẩm đóng gói có thời hạn sử dụng dài.'),
@@ -218,6 +220,7 @@ values
 		(N'Tiền',N'Loại hàng hóa có giá trị lưu thông không có giá trị lưu giữ')
 
 --tbDotLu
+go
 SET DATEFORMAT dmy
 INSERT INTO tbDotLu (tenDotLu, ngayBatDau, ngayKetThuc)
 VALUES
@@ -229,6 +232,7 @@ VALUES
 
 
 --tbBaiDang
+go
 SET DATEFORMAT dmy
 insert into tbBaiDang(tieuDe,noiDung,ngayDang,idDotLu,idTaiKhoan)
 values 
@@ -239,6 +243,7 @@ values
     (N'Tiêu đề bài đăng 5', N'Nội dung bài đăng 5', '6/5/2023', 3, 5)
 
 --tbHinhAnh
+go
 insert into tbHinhAnh (urlHinhAnh, idBaiDang)
 values 
     ('url_hinh_anh_1.jpg', 1),
@@ -248,6 +253,7 @@ values
     ('url_hinh_anh_5.jpg', 4);
 
 --tbDonDangKyUngHo
+go
 SET DATEFORMAT dmy
 insert into tbDonDangKyUngHo (tenHangUngHo, ngayDK, trangThai, idTaiKhoan, idDotLu)
 values 
@@ -258,6 +264,7 @@ values
     (N'Thuốc men, rau củ','06/05/2023', N'Chưa duyệt', 5, 3);
 
 	--tbHangHoa
+	go
 insert into tbHangHoa (tenHangHoa, soLuong,mota ,donViTinh, idDanhMuc)
 values 
 	(N'Tiền',100000000,null,'VND',4),
@@ -269,6 +276,7 @@ values
     
 
 --tbDotCuuTro
+go
 insert into tbDotCuuTro (tenDotCuuTro, ngayBatDau, ngayKetThuc, idDotLu)
 values 
     (N'Đợt cứu trợ 1', '15/05/2023', '30/05/2023', 1),
@@ -278,6 +286,7 @@ values
     (N'Đợt cứu trợ 5', '20/08/2023', '05/09/2023', 5)
 
 --tbChiTietHangUngHo
+go
 insert into tbChiTietHangUngHo (idHangHoa, idDonDK, soLuong)
 values 
     (1, 1, 1000000),
@@ -287,6 +296,7 @@ values
     (5, 4, 10)
 
 --tbChiTietHangCuuTro
+go
 insert into tbChiTietHangCuuTro (idHangHoa, idTaiKhoan, idDotCuuTro, soLuong)
 values 
     (1, 2, 1, 500000),
@@ -296,6 +306,7 @@ values
     (5, 5, 4, 10);
 
 --tbMucDoThietHai
+go
 insert into tbMucDoThietHai (mucThietHai, moTa)
 values 
     (N'mức 1', N'Thất thoát nhẹ nhàng, gây mất mát nhỏ, không ảnh hưởng nhiều đến cuộc sống hàng ngày.'),
@@ -304,6 +315,7 @@ values
     (N'mức 4', N'Thất thoát rất nặng, gây mất mát rất lớn và nghiêm trọng, ảnh hưởng nghiêm trọng đến cuộc sống hàng ngày, có thể gây ra những thay đổi sâu sắc và kéo dài.')
 
 --tbChiTietMucDoThietHai
+go
 insert into tbChiTietMucDoThietHai (idMucDo, idTaiKhoan, idDotLu,mota)
 values 
     (1, 1, 1,N'Ngập lụt 1m'),
@@ -313,6 +325,7 @@ values
     (4, 5, 4,N'Nhà tốc mái hêt, sập 1 bên tường, chết 2 con heo do lũ cuốn')
 
 --tbThongBao
+go
 insert into tbThongBao (noiDung, ngayDang, idTaiKhoan)
 values 
     (N'Thông báo 1', '02/05/2023', 1),
@@ -322,6 +335,7 @@ values
     (N'Thông báo 5', '06/05/2023', 5)
 
 --tbFile
+go
 insert into tbFile (urlFile, idThongBao)
 values 
     ('url_file_1', 1),
@@ -330,7 +344,7 @@ values
     ('url_file_4', 4),
     ('url_file_5	', 5);
 
-
+go
 --Trigger cập nhật số lượng hiện còn (tbHangHoa)khi thêm hàng cứu trợ (tbChiTietHangCuuTro)
 CREATE TRIGGER update_product_quantity
 ON  tbChiTietHangCuuTro
@@ -367,7 +381,7 @@ BEGIN
         THROW 51000, @errorMessage, 1;
     END;
 END;
-
+go
 -- trigger tự động cập nhật số lượng hàng hóa khi thêm chi tiết hàng ủng hộ
 CREATE TRIGGER CapNhatSoLuongHangUngHo
 ON  tbChiTietHangUngHo
@@ -385,7 +399,7 @@ BEGIN
 	FROM deleted as d
 	WHERE tbHangHoa.idHangHoa = d.idHangHoa;
 END 
-
+go
 --Cập nhật trạng thái "Đã nhận hàng" cho đơn đăng ký sau khi insert dữ liệu vào bảng chi tiết ủng hộ
 CREATE TRIGGER trg_UpdateTrangThaiDonDangKy
 ON tbChiTietHangUngHo
@@ -400,7 +414,7 @@ BEGIN
 END 
 
 ------FUNCTION
-
+go
 --Tính tổng tiền từng đợt cứu trợ
 CREATE FUNCTION dbo.TinhTongTienDotCuuTro(
     @IDdotCuuTro NVARCHAR(50)
@@ -420,7 +434,7 @@ BEGIN
 
     RETURN @TongTien
 END 
-
+go
 -- function tính tổng sl của 1 hàng hóa ủng hộ trong 1 đợt lũ
 CREATE FUNCTION dbo.TinhTongSoLuongHangUngHoTheoMaHH_DotLu
 (@IdDotLu int, @IdHangHoa int)
@@ -436,7 +450,7 @@ BEGIN
 
     RETURN @TongSL
 END 
-
+go
 --Xây dựng function Tính tổng số lần đã ủng hộ của 1 mạnh thường quân
 CREATE FUNCTION fn_SoLanUngHoThanhCong(@ManhThuongQuanID INT)
 RETURNS INT
@@ -451,7 +465,7 @@ BEGIN
 
     RETURN @SoLanUngHo
 END 
-
+go
 --Hiển thị hàng hóa theo danh mục
 CREATE PROC prHIENTHIHANGHOATHEODANHMUC 
     @idDanhMuc bigint 
@@ -468,7 +482,7 @@ IF @@ERROR <> 0
     ROLLBACK TRANSACTION
 ELSE
 COMMIT TRANSACTION 
-
+go
 -- Procedure lấy ra hàng hóa mà hộ gia đình x nhận được vào đợt cứu trợ x 
 CREATE PROC pr_HIENTHIHANGHOAHOGIADINHNHANDUOCCHOTUNGDOTLU
     @idDotCuuTro bigint,
@@ -495,7 +509,7 @@ BEGIN
         tbDotCuuTro.idDotCuuTro = @idDotCuuTro 
         AND tbTaiKhoan.idTaiKhoan = @idHoGiaDinh
 END 
-
+go
 -- Procedure lấy ra đợt thiệt hại của hộ gia đình x trong đợt lũ x 
 CREATE PROC pr_HIENTHIDOTTHIETHAI
     @idDotLu bigint,
@@ -519,7 +533,7 @@ BEGIN
         tbDotLu.idDotLu = @idDotLu
         AND tbTaiKhoan.idTaiKhoan = @idHoGiaDinh
 END 
-
+go
 --procedure hiển thị chi tiết hàng ủng hộ của 1 MTQ trong 1 đợt lũ 
 CREATE PROC pr_HienThiChiTietHH_MTQ_UngHoTheoDotLu
     @idDotLu bigint,
@@ -546,7 +560,7 @@ BEGIN
         AND tbTaiKhoan.idTaiKhoan = @idMTQ
 	GROUP BY tbTaiKhoan.hoVaTen, tbDotLu.tenDotLu, hh.tenHangHoa
 END 
-
+go
 --Xây dựng 1 Procedure Hiển thị Tổng số lượng Hàng ủng hộ và Tổng số lượng cứu trợ (theo Đợt lũ, Tên danh mục, Tên hàng hóa) 
 CREATE PROCEDURE pr_ThongKeSlgHangUngHo_CuuTro_TheoDot
 AS

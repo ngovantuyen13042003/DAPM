@@ -1,0 +1,119 @@
+﻿@model DAPM.Models.TbDotCuuTro
+
+@{
+    ViewData["Title"] = "XÓA ĐỢT CỨU TRỢ";
+    
+}
+
+<h2>XÓA ĐỢT CỨU TRỢ</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="row">
+            <dt>
+                Tên đợt lũ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdDotLuNavigation.TenDotLu)
+            </dd>
+        </div>
+        <div class="row">
+            <dt>
+                Tên đợt cứu trợ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenDotCuuTro)
+            </dd>
+        </div>
+        <div class="row">
+            <dt>
+                Ngày bắt đầu
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgayBatDau)
+            </dd>
+        </div>
+        <div class="row">
+            <dt>
+                Ngày kết thúc
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgayKetThuc)
+            </dd>
+        </div>
+
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="button-container">
+            <input type="submit" value="Xóa" class="btn btn-delete" />
+            <button type="button" class="btn btn-back" onclick="window.location.href='@Url.Action("Index")'">Quay lại</button>
+        </div>
+    }
+    
+</div>
+
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    .dl-horizontal {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        margin: auto;
+    }
+
+    .dl-horizontal dt {
+        margin-left: 10%;
+        text-align: start;
+        justify-content: start;
+    }
+
+    .dl-horizontal dd {
+        margin-left: auto;
+        flex-direction: column;
+        width: 300px;
+    }
+
+    .btn-delete {
+        background-color: burlywood;
+        color: black;
+        border: solid 1px black;
+        padding: 6px 12px;
+    }
+
+    .btn-delete:hover {
+        background-color: lightgray;
+    }
+
+    .btn-back {
+        background-color: indianred;
+        color: black;
+        border: solid 1px black;
+        padding: 6px 12px;
+    }
+
+    .btn-back:hover {
+        background-color: lightgray;
+    }
+
+    .button-container {
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .row {
+        display: flex;
+    }
+</style>
