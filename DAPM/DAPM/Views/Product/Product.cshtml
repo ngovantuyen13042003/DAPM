@@ -1,0 +1,154 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Hàng Ủng Hộ</title>
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="@Url.Content("~/img/logo.jpeg")" alt="Logo">
+                <h1>HUYỆN HÒA VANG</h1>
+            </div>
+            <hr />
+            <nav>
+                <ul>
+                    <li><a href="#">Cập nhật tài khoản</a></li>
+                    <li><a href="#">Cập nhật Đợt lũ</a></li>
+                    <li><a href="#">Cập nhật Danh mục</a></li>
+                    <li><a href="#">Cập nhật ủng hộ</a></li>
+                    <li><a href="#">Cập nhật thiệt hại</a></li>
+                    <li><a href="#">Cập nhật cứu trợ</a></li>
+
+                    <ul>
+                        <li><a href="#">Danh sách đăng ký</a></li>
+                        <li><a href="#">Hàng hóa ủng hộ</a></li>
+                    </ul>
+              
+                    <li><a href="#">Thống kê & báo cáo</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                </div>
+                <div class="user-info">
+                    <i class="fa-regular fa-user" style="margin-right: 10px"></i>
+                    <span>Admin</span>
+                    <i class="fa-regular fa-bell"></i>
+                </div>
+            </header>
+            <hr />
+            <section class="content">
+                <div class="box-title-page">
+                    <h1>DANH SÁCH HÀNG ỦNG HỘ</h1>
+                </div>
+                <div class="box-add-btn">
+                    <button class="add-button" style="right: 0">Thêm</button>
+                    </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên hàng hóa</th>
+                            <th>Số lượng</th>
+                            <th>Mô tả</th>
+                            <th>Đơn vị tính</th>
+                            <th>ID danh mục</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Tiền</td>
+                            <td>50.000.000</td>
+                            <td>null</td>
+                            <td>VND</td>
+                            <td>1</td>
+                            <td>
+                                <button class="edit-button">Edit</button>
+                                <button class="delete-button">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Gạo</td>
+                            <td>100</td>
+                            <td>null</td>
+                            <td>KG</td>
+                            <td>2</td>
+                            <td>
+                                <button class="edit-button">Edit</button>
+                                <button class="delete-button">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Mỳ tôm</td>
+                            <td>50</td>
+                            <td>Mỳ hảo hảo, 3 miền</td>
+                            <td>Thùng</td>
+                            <td>2</td>
+                            <td>
+                                <button class="edit-button">Edit</button>
+                                <button class="delete-button">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Nước sạch</td>
+                            <td>100</td>
+                            <td>Nước khoáng đóng chai</td>
+                            <td>Lít</td>
+                            <td>3</td>
+                            <td>
+                                <button class="edit-button">Edit</button>
+                                <button class="delete-button">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Áo quần</td>
+                            <td>20</td>
+                            <td>Áo ấm, chống lạnh</td>
+                            <td>KG</td>
+                            <td>4</td>
+                            <td>
+                                <button class="edit-button">Edit</button>
+                                <button class="delete-button">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Thuốc chống sốt</td>
+                            <td>10</td>
+                            <td>Thuốc hạ sốt, giảm đau</td>
+                            <td>Hộp</td>
+                            <td>4</td>
+                            <td>
+                                <button class="edit-button">Edit</button>
+                                <button class="delete-button">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button class="prev-button">«</button>
+                    <span>1</span>
+                    <button class="next-button">»</button>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
