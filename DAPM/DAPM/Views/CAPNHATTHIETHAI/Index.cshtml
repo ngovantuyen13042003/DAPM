@@ -1,0 +1,124 @@
+﻿@model IEnumerable<dynamic>
+@{
+    Layout = null;
+    ViewData["Title"] = "Cập nhật thiệt hại";
+    int counter = 1;
+}
+
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập nhật thiệt hại</title>
+    <link rel="stylesheet" href="/css/hoangstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="/img/logo.png" alt="Logo" style="width: 80px;">
+                <span>HUYỆN HOA VÀNG</span>
+            </div>
+            <ul class="menu">
+                <li><a href="#"><img src="/img/home.png" alt="Home"> Tổng quan</a></li>
+                <li><a href="#"><img src="/img/danhmuc.png" alt="Category"> Danh mục hàng hóa</a></li>
+                <li><a href="#" class="active"><img src="/img/dotlu.png" alt="Flood"> Quản lý đợt lũ</a></li>
+                <li class="dropdown">
+                    <a href="#">
+                        <img src="/img/thiethai.png" alt="Damage">
+                        <span>Cập nhật thiệt hại</span>
+                        <span><i class="fa-solid fa-angle-down angle"></i></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Danh mục thiệt hại</a></li>
+                        <li><a href="#">Chi tiết thiệt hại</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><img src="/img/ungho.png" alt="Support"> Quản lý ủng hộ</a></li>
+                <li><a href="#"><img src="/img/cuutro.png" alt="Rescue"> Quản lý cứu trợ</a></li>
+                <li><a href="#"><img src="/img/taikhoan.png" alt="Account"> Quản lý tài khoản</a></li>
+                <li><a href="#"><img src="/img/thongke.png" alt="Report"> Thống kê & báo cáo</a></li>
+            </ul>
+
+        </div>
+        <div class="content">
+            <div class="header">
+                <div class="header-title">
+                    <h2>Cập nhật thiệt hại</h2>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                    <img src="/img/search.png" alt="Search" style="width: 15px;">
+                </div>
+                <div class="user-info">
+                    <div class="user-section">
+                        <img src="/img/user.png" alt="User" style="width: 24px;">
+                        <span>Admin</span>
+                    </div>
+                    <div class="notification-section">
+                        <img src="/img/notifi.png" alt="Notifications" style="width: 24px;">
+                        <span class="notification-badge">1</span>
+                        <!-- <div class="notification-badge"></div>  -->
+                    </div>
+                    <div class="settings-section">
+                        <img src="/img/setting.png" alt="Settings" style="width: 24px;">
+                    </div>
+                </div>
+            </div>
+            <div class="table-header">
+                <h1>DANH SÁCH THIỆT HẠI</h1>
+                <a asp-action="Create" class="btn-add">Thêm Mới</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Tên đợt lũ</th>
+                        <th>Mức thiệt hại</th>
+                        <th>Mô tả</th>
+                        <th>Hành động</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                     @foreach(var item in Model)
+                    {
+                    <tr>
+                        <td>@counter</td>
+                        <td>@item.TenDangNhap</td>
+                        <td>@item.TenDotLu</td>
+                        <td>@item.MucThietHai</td>
+                        <td>@item.MoTa</td>
+                        <td>
+                                <a href="@Url.Action("Edit", "CAPNHATTHIETHAI", new { idMucDo = item.IdMucDo, idTaiKhoan = item.IdTaiKhoan, idDotLu = item.IdDotLu })">Edit</a>
+                                <a href="@Url.Action("Delete", "CAPNHATTHIETHAI", new { idMucDo = item.IdMucDo, idTaiKhoan = item.IdTaiKhoan, idDotLu = item.IdDotLu })" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Delete</a>
+
+                        </td>
+                    </tr>
+                    counter++;
+                    }
+                    <!-- More rows here -->
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button>❮</button>
+                <button>1</button>
+                <button>❯</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const dropDown = document.querySelector(".dropdown a")
+    const dropDownMenu = document.querySelector(".dropdown .dropdown-menu")
+    const iconAngle = document.querySelector(".dropdown .angle")
+
+    dropDown.addEventListener("click", () => {
+        dropDownMenu.classList.toggle("active")
+        iconAngle.classList.toggle("active")
+    })
+</script>

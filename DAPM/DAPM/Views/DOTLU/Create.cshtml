@@ -1,0 +1,36 @@
+﻿@model DAPM.Models.TbDotLu
+
+@{
+    ViewData["Title"] = "Thêm Đợt Lũ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .btn{
+        margin-top:5px;
+    }
+</style>
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="TenDotLu">Tên đợt lũ</label>
+        <input asp-for="TenDotLu" class="form-control" />
+        <span asp-validation-for="TenDotLu" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="NgayBatDau">Ngày bắt đầu</label>
+        <input asp-for="NgayBatDau" class="form-control" type="date" />
+        <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="NgayKetThuc">Ngày kết thúc</label>
+        <input asp-for="NgayKetThuc" class="form-control" type="date" />
+        <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
+    </div>
+    <div class="btn">
+        <button type="submit" class="btn btn-primary">Thêm</button>
+        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Hủy</button>
+    </div>
+</form>
