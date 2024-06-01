@@ -1,4 +1,5 @@
 using DAPM.Data;
+using DAPM.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,10 +7,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
 builder.Services.AddDbContext<DbLuLutHoaVangContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DAPM"));
 });
+
+
+// add services
+builder.Services.AddScoped<HangHoaService>();
+builder.Services.AddScoped<DanhMucService>();   
+
+
 
 var app = builder.Build();
 
@@ -29,6 +38,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}");
+    pattern: "{controller=Product}/{action=Product}");
 
 app.Run();

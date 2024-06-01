@@ -1,0 +1,84 @@
+﻿@model Tuple<DAPM.Models.TbHangHoa, List<DAPM.Models.TbDanhMuc>>
+
+
+
+<link href="~/css/EditProduct.css" rel="stylesheet" />
+<div class="container-title-page" style="display: flex; margin: 30px">
+    <h1 style="margin: 0 auto">SỬA SẢN PHẨM</h1>
+</div>
+<form class="form" method="post" action="/Product/EditProduct">
+    <div class="row" style="justify-content: center">
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="input-group">
+                    <label>ID hàng hóa</label>
+                    <span class="form-control" id="idhanghoa">@Model.Item1.IdHangHoa</span>
+                    <input type="hidden" name="idhanghoa" value="@Model.Item1.IdHangHoa" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <style>
+                    .nice-select {
+                        width: 310px;
+                        height: 50px;
+                    }
+
+                    .current {
+                        display: block;
+                        padding: 10px;
+                    }
+                </style>
+                <label>Tên danh mục</label>
+                <select name="iddanhmuc">
+                    @foreach (var item in Model.Item2)
+                    {
+                        if (item.IdDanhMuc == Model.Item1.IdDanhMuc)
+                        {
+                            <option value="@item.IdDanhMuc" selected="selected">@item.TenDanhMuc</option>
+                        }
+                        else
+                        {
+                            <option value="@item.IdDanhMuc">@item.TenDanhMuc</option>
+
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Tên hàng hóa</label>
+                <input type="text" name="tenhanghoa" value="@Model.Item1.TenHangHoa" required="">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Số lượng</label>
+                <input type="number" name="soluong" value="@Model.Item1.SoLuong" required="">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Mô tả</label>
+                <input type="text" name="mota" value="@Model.Item1.MoTa" required="">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Đơn vị tính</label>
+                <input type="text" name="donvitinh" value="@Model.Item1.DonViTinh" required="">
+            </div>
+        </div>
+        
+        
+        <div class="col-lg-6">
+            <div class="form-group login-btn">
+                <button class="btn" type="submit">Lưu</button>
+                <button class="btn" type="button" onclick="window.location.href='/Product/Product'">Đóng</button>
+            </div>
+        </div>
+    </div>
+</form>

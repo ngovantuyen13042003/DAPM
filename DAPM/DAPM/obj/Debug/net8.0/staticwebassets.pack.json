@@ -177,6 +177,14 @@
       "PackagePath": "staticwebassets\\js\\bootstrap.min.js.map"
     },
     {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\AddProduct.css",
+      "PackagePath": "staticwebassets\\css\\AddProduct.css"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\EditProduct.css",
+      "PackagePath": "staticwebassets\\css\\EditProduct.css"
+    },
+    {
       "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

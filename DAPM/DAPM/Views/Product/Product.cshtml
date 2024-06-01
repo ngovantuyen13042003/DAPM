@@ -1,4 +1,10 @@
-﻿@{
+﻿
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<DAPM.ViewModels.HangHoaViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -52,103 +58,76 @@
                 <div class="box-title-page">
                     <h1>DANH SÁCH HÀNG ỦNG HỘ</h1>
                 </div>
-                <div class="box-add-btn">
-                    <button class="add-button" style="right: 0">Thêm</button>
+                <div class="alert-danger" style="color: red">@TempData["Message"]</div>
+
+                <div class="box-add-btn" >
+                    <button class="add-button" style="right: 0; background-color:  #32CD32"> <a style="text-decoration: none ; color: white; height: 100%; width: 100%" href="/Product/AddProduct">Thêm</a> </button>
                     </div>
-                <table>
+                <table style="overflow: auto;">
                     <thead>
                         <tr>
                             <th>STT</th>
+                            <th>Danh mục</th>
                             <th>Tên hàng hóa</th>
                             <th>Số lượng</th>
                             <th>Mô tả</th>
                             <th>Đơn vị tính</th>
-                            <th>ID danh mục</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Tiền</td>
-                            <td>50.000.000</td>
-                            <td>null</td>
-                            <td>VND</td>
-                            <td>1</td>
-                            <td>
-                                <button class="edit-button">Edit</button>
-                                <button class="delete-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Gạo</td>
-                            <td>100</td>
-                            <td>null</td>
-                            <td>KG</td>
-                            <td>2</td>
-                            <td>
-                                <button class="edit-button">Edit</button>
-                                <button class="delete-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Mỳ tôm</td>
-                            <td>50</td>
-                            <td>Mỳ hảo hảo, 3 miền</td>
-                            <td>Thùng</td>
-                            <td>2</td>
-                            <td>
-                                <button class="edit-button">Edit</button>
-                                <button class="delete-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Nước sạch</td>
-                            <td>100</td>
-                            <td>Nước khoáng đóng chai</td>
-                            <td>Lít</td>
-                            <td>3</td>
-                            <td>
-                                <button class="edit-button">Edit</button>
-                                <button class="delete-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Áo quần</td>
-                            <td>20</td>
-                            <td>Áo ấm, chống lạnh</td>
-                            <td>KG</td>
-                            <td>4</td>
-                            <td>
-                                <button class="edit-button">Edit</button>
-                                <button class="delete-button">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Thuốc chống sốt</td>
-                            <td>10</td>
-                            <td>Thuốc hạ sốt, giảm đau</td>
-                            <td>Hộp</td>
-                            <td>4</td>
-                            <td>
-                                <button class="edit-button">Edit</button>
-                                <button class="delete-button">Delete</button>
-                            </td>
-                        </tr>
+                        @{
+                            var stt = 0;
+                        }
+                        @foreach(var item in Model)
+                        {
+                            stt++;
+                            <tr>
+                                <td>@stt</td>
+                                <td>@item.TenDanhMuc</td>
+                                <td>@item.TenHangHoa</td>
+                                <td>@item.SoLuong</td>
+                                <td>@item.MoTa</td>
+                                <td>@item.DonViTinh</td>
+                                <td>
+                                    <a class="add-button" style="background-color: #007FFF; text-decoration: none" href="/Product/EditProduct?id=@item.IdHangHoa">Sửa</a>
+                                    <a class="delete-button-a" style="background-color: #FF0000  ; text-decoration: none; padding: 10px 20px;border: none;border-radius: 10px;    border: none;transition: background-color 0.3s ease; color: white" href="/Product/DeleteProduct?id=@item.IdHangHoa">Delete</a>
+                                </td>
+                            </tr>
+                        }
+
                     </tbody>
                 </table>
-                <div class="pagination">
-                    <button class="prev-button">«</button>
-                    <span>1</span>
-                    <button class="next-button">»</button>
+                <div class="pagination" style="margin: 0">
+                    <div style="display: none" class="hint-text hidden">Showing <b>@Model.Count()</b> out of <b>@Model.PageSize</b> entries</div>
+                    <ul class="pagination">
+                        @for (int i = 1; i <= Model.PageCount; i++)
+                        {
+                            <li style=" list-style-type: none ;padding: 6px 10px; margin: 0 5px; border: none; cursor: pointer; background-color: #ccc; border-radius: 5px; ">
+                                <a style="text-decoration: none; color: black"  href="@Url.Action("Product", "Product", new { page = i})" class="page-link">@i</a>
+                            </li>
+                        }
+                    </ul>
                 </div>
+
             </section>
         </main>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var paginationLinks = document.querySelectorAll('.pagination a');
+
+            paginationLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    paginationLinks.forEach(function (item) {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+ 
 </body>
 </html>

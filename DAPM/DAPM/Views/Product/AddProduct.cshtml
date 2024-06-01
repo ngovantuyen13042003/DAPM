@@ -1,0 +1,55 @@
+﻿@model List<DAPM.Models.TbDanhMuc>
+
+
+<link href="~/css/AddProduct.css" rel="stylesheet" />
+<div class="container-title-page" style="display: flex; margin: 30px">
+    <h1 style="margin: 0 auto">THÊM SẢN PHẨM</h1>
+</div>
+
+<form class="form" method="post" action="/Product/AddProduct">
+    <div class="row" style="justify-content: center">
+        <div class="col-lg-6">
+            
+            <div class="form-group">
+                <label>Danh mục</label>
+                <select name="iddanhmuc">
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.IdDanhMuc">@item.TenDanhMuc</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Tên hàng hóa</label>
+                <input type="text" name="tenhanghoa" required="">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Số lượng</label>
+                <input type="number" name="soluong" required="" />
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Mô tả</label>
+                <input type="text" name="mota" required="">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Đơn vị tính</label>
+                <input type="text" name="donvitinh" required="">
+            </div>
+        </div>
+        
+        <div class="col-lg-6 btn-action" >
+            <div class="form-group login-btn">
+                <button class="btn" type="submit" onclick="window.location.href='/Product'">Lưu</button>
+                <button class="btn" type="button" onclick="window.location.href='/Product/Product'">Đóng</button>
+            </div>
+        </div>
+    </div>
+</form>

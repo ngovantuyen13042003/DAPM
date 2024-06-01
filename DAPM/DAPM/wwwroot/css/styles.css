@@ -4,17 +4,22 @@
     padding: 0;
     display: flex;
     height: 100vh;
+    overflow-x: hidden;
+}
+
+.active {
+    background-color: #000f;
+    color: white;
 }
 
 .container {
+    height: 100vh;
     display: flex;
     width: 100%;
 }
 
-
 .sidebar {
     width: 250px;
-    /*background-color: #f4f4f4;*/
     padding: 20px;
     border-right: 1px solid #ccc;
 }
@@ -49,6 +54,7 @@
 .main-content {
     flex: 1;
     padding: 20px;
+    overflow-y: auto; /* Thêm thanh cuộn dọc nếu cần */
 }
 
 header {
@@ -61,13 +67,13 @@ header {
     margin-left: 300px
 }
 
-.search-bar input {
-    width: 500px;
-    padding: 10px;
-    font-size: 16px;
-    line-height: 14px;
-    border-radius: 10px;
-}
+    .search-bar input {
+        width: 500px;
+        padding: 10px;
+        font-size: 16px;
+        line-height: 14px;
+        border-radius: 10px;
+    }
 
 .user-info {
     display: flex;
@@ -84,7 +90,8 @@ header {
     }
 
 .content {
-    margin-top: 20px;
+    margin-top: 10px;
+    overflow-y: auto; /* Thêm thanh cuộn dọc nếu cần */
 }
 
     .content h1 {
@@ -101,7 +108,7 @@ header {
     justify-content: end;
     margin-bottom: 8px;
 }
-/* Button Styling */
+
 .add-button {
     padding: 10px 20px;
     background-color: #007bff;
@@ -111,31 +118,11 @@ header {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
-    /* Hover Effect */
     .add-button:hover {
         background-color: #0056b3;
-    }
-
-/* Positioning the Button to the Right */
-.button-container {
-    display: flex;
-    justify-content: flex-end; /* Aligns the button to the right */
-    margin-bottom: 20px;
-}
-
-
-   
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-    table th, table td {
-        padding: 10px;
-        border: 1px solid #ddd;
-        text-align: left;
     }
 
 .edit-button, .delete-button {
@@ -156,6 +143,14 @@ table {
 
 .delete-button {
     background-color: #dc3545;
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
     .delete-button:hover {
@@ -165,7 +160,7 @@ table {
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
     .pagination button {
@@ -182,3 +177,34 @@ table {
     .pagination .next-button {
         background-color: #f4f4f4;
     }
+
+    .pagination .hint-text {
+        display: none;
+    }
+
+.page-link {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #f4f4f4;
+}
+
+    .page-link :hover {
+        background-color: #ededed;
+    }
+
+
+
+delete-button-a {
+    background-color: #FF0000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}

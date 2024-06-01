@@ -266,7 +266,33 @@ values
     (N'Quần áo ấm', 150, null,'KG',3),
     (N'Thuốc chống sốt', 300, null,'Hộp',3),
     (N'Mỳ tôm hảo hảo', 500, null,'Thùng',1)
-    
+
+	UPDATE tbHangHoa 
+SET tenHangHoa = N'Tiền', soLuong = 100000000, mota = null, donViTinh = 'VND', idDanhMuc = 4 
+WHERE idHangHoa = 1;
+
+UPDATE tbHangHoa 
+SET tenHangHoa = N'Gạo', soLuong = 100, mota = null, donViTinh = 'KG', idDanhMuc = 1 
+WHERE idHangHoa = 2;
+
+UPDATE tbHangHoa 
+SET tenHangHoa = N'Nước đóng chai', soLuong = 200, mota = null, donViTinh = 'Lít', idDanhMuc = 2 
+WHERE idHangHoa = 3;
+
+UPDATE tbHangHoa 
+SET  mota = N'size từ 10kg đến 90kg' 
+WHERE idHangHoa = 4;
+
+UPDATE tbHangHoa 
+SET  mota = N'Thuốc paracetamal' 
+WHERE idHangHoa = 5;
+
+UPDATE tbHangHoa 
+SET mota = N'Mì tôm hảo hảo'
+WHERE idHangHoa = 6;
+
+SELECT * FROM tbHangHoa
+
 
 --tbDotCuuTro
 insert into tbDotCuuTro (tenDotCuuTro, ngayBatDau, ngayKetThuc, idDotLu)
