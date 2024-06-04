@@ -13,9 +13,10 @@ create table tbTaiKhoan
 	email varchar(50) unique check (email like '%@%') null,
 	sdt varchar(11) null unique,
 	diaChi nvarchar(50) null,
-	tenPhuong nvarchar null
+	tenPhuong nvarchar(100) null
 )
 go
+
 create table tbDanhMuc
 (
 	idDanhMuc bigint IDENTITY(1,1) not null primary key,

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "r2Ekd7Mw48j0YZDSKb+aX+IDcNvCUXi18QlvyESX68I=",
+  "Hash": "OrQXLANJFbRPNyFDayH/57ZtN6T8AStE2Arn9g5EXeI=",
   "Source": "DAPM",
   "BasePath": "_content/DAPM",
   "Mode": "Default",
@@ -3076,6 +3076,25 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\stylelogin.css",
+      "SourceId": "DAPM",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\",
+      "BasePath": "_content/DAPM",
+      "RelativePath": "css/stylelogin.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\stylelogin.css"
+    },
+    {
       "Identity": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\styles.css",
       "SourceId": "DAPM",
       "SourceType": "Discovered",
@@ -3112,6 +3131,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\bg2.jpg",
+      "SourceId": "DAPM",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\",
+      "BasePath": "_content/DAPM",
+      "RelativePath": "img/bg2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\bg2.jpg"
     },
     {
       "Identity": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\cuutro.png",

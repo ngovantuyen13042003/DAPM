@@ -633,12 +633,20 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\stylelogin.css",
+      "PackagePath": "staticwebassets\\css\\stylelogin.css"
+    },
+    {
       "Id": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\styles.css",
       "PackagePath": "staticwebassets\\css\\styles.css"
     },
     {
       "Id": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\bg2.jpg",
+      "PackagePath": "staticwebassets\\img\\bg2.jpg"
     },
     {
       "Id": "D:\\Visual Studio 2019\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\cuutro.png",

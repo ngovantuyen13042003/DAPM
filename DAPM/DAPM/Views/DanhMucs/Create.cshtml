@@ -63,7 +63,7 @@
             <div class="form-group">
                 <div class="button-container">
                     <input type="submit" value="Thêm" class="btn btn-addd" />
-                    <button href="@Url.Action("Index", "DanhMucs")" type="button" class="btn btn-back">Quay lại</button>
+                    <a href="@Url.Action("Index", "DanhMucs")" class="btn btn-back">Quay lại</a>
                 </div>
             </div>
         </div>
@@ -138,11 +138,15 @@
         }
 
     .btn-back {
+        display: inline-block;
+        text-align: center;
+        line-height: 40px;
+        text-decoration: none;
         background-color: indianred;
-        color: black;
         height: 40px;
         width: 100px;
         border: solid 1px black;
+        color: black;
         border-radius: 10px;
     }
 

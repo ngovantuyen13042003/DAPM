@@ -66,7 +66,7 @@
                         @Html.DisplayFor(modelItem => item.TenDangNhap)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.MatKhau)
+                        <input disabled type="password" value="@Html.DisplayFor(modelItem => item.MatKhau)" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Quyen)
@@ -97,13 +97,13 @@
     </tbody>
 </table>
 
-<div class="pagination">
+<div>
     <div class="hint-text">Showing <b>@Model.Count()</b> out of <b>@Model.PageSize</b> entries</div>
     <ul class="pagination">
         @for (int i = 1; i <= Model.PageCount; i++)
         {
-            <li>
-                <a href="@Url.Action("Index", new { page = i})" class="page-link">@i</a>
+            <li class="pagenum">
+                <a href="@Url.Action("Index", "TaiKhoans", new { page = i})">@i</a>
             </li>
         }
     </ul>
