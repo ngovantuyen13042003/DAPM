@@ -13,7 +13,12 @@ namespace DAPM.Controllers
             _context = context;
         }
         private readonly ILogger? _logger;
-        
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public IActionResult Login()
         {
             return View();
@@ -34,7 +39,7 @@ namespace DAPM.Controllers
                         return RedirectToAction("Index", "TaiKhoans");
                     } else if (data[0].Quyen == "subadmin")
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index", "Home");
                     }
                     
                 }

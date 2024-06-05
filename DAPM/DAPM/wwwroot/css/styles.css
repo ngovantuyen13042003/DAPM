@@ -72,8 +72,13 @@
 		color: white;
 	}
 
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
 .dropdown-menu {
 	list-style: none;
+	display: none;
 }
 
 	.dropdown-menu.active {
@@ -99,6 +104,8 @@
 .dropdown a .angle.active {
 	transform: rotate(90deg)
 }
+
+
 
 /* .menu li:hover .dropdown-menu {
     display: block; /* Shows the dropdown when parent is hovered */
