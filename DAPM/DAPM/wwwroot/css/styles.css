@@ -223,6 +223,18 @@
 	border-radius: 10px;
 }
 
+.filter p select {
+	height: 40px;
+}
+
+.btn-filter {
+	height: 38px;
+	width: 50px;
+	background-color: #98E0FF;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+}
+
 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -238,6 +250,7 @@ th, td {
 th {
 	background-color: #f0f0f0;
 }
+
 .hint-text {
 	margin-top: 10px;
 }
@@ -258,9 +271,7 @@ th {
 		border-radius: 5px;
 	}
 
-	.pagination li a {
-		text-decoration: none;
-		color: white;
-	}
-
-
+		.pagination li a {
+			text-decoration: none;
+			color: white;
+		}

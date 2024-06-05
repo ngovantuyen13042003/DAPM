@@ -22,11 +22,17 @@ namespace DAPM.Controllers
 
         // GET: TaiKhoans
         
-        public IActionResult Index(int? page)
+        public IActionResult Index(int? page, string? searchString)
         {
             int pageSize = 10;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
             var lsttaikhoan = _context.TbTaiKhoans.AsNoTracking().OrderBy(x => x.IdTaiKhoan);
+            
+            if (!String.IsNullOrEmpty(searchString) && !searchString.Equals("all"))
+            {
+                lsttaikhoan = _context.TbTaiKhoans.AsNoTracking().Where(s => s.Quyen.Equals(searchString)).OrderBy(x => x.IdTaiKhoan);
+            }
+
             PagedList<TbTaiKhoan> lst = new PagedList<TbTaiKhoan>(lsttaikhoan, pageNumber, pageSize);
             return View(lst);
         }

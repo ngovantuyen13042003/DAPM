@@ -32,10 +32,24 @@
 </div>
 <div class="table-header">
     <h1>DANH SÁCH TÀI KHOẢN</h1>
+    
     <a asp-action="Create" asp-controller="TaiKhoans" class="btn-add">
         <i class="fa fa-plus me-2"></i> <span>Thêm mới</span>
     </a>
 </div>
+<form asp-controller="TaiKhoans" asp-action="Index" class="filter">
+    <p>
+        Phân quyền: 
+        <select class="form-select" name="searchString">
+            <option value="all">Tất cả</option>
+            <option value="admin">CB Huyện</option>
+            <option value="subadmin">CB Phường</option>
+            <option value="volunteer">Mạnh thường quân</option>
+            <option value="citizen">Người dân</option>
+        </select>
+        <input type="submit" value="Lọc" class="btn-filter" />
+    </p>
+</form>
 <p>@TempData["Message"]</p>
 <table>
     <thead>
