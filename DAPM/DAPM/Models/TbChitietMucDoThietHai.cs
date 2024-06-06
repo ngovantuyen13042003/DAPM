@@ -13,9 +13,9 @@ public partial class TbChitietMucDoThietHai
 
     public string? Mota { get; set; }
 
-    public virtual TbDotLu IdDotLuNavigation { get; set; } = null!;
+    public virtual TbDotLu? IdDotLuNavigation { get; set; } 
 
-    public virtual TbMucDoThietHai IdMucDoNavigation { get; set; } = null!;
+    public virtual TbMucDoThietHai? IdMucDoNavigation { get; set; }
 
-    public virtual TbTaiKhoan IdTaiKhoanNavigation { get; set; } = null!;
+    public virtual TbTaiKhoan? IdTaiKhoanNavigation { get; set; }
 }

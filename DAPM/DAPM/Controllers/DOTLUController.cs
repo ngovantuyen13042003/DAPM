@@ -12,9 +12,26 @@ namespace DAPM.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchTerm,int page = 1, int pageSize = 7)
         {
-            var dotLus = await _context.TbDotLus.ToListAsync();
+            IQueryable<TbDotLu> query = _context.TbDotLus.AsQueryable();
+            var totalItems = await query.CountAsync();
+            var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(x => x.TenDotLu.Contains(searchTerm));
+            }
+
+            var dotLus = await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+            ViewBag.PageSize = pageSize;
+
             return View(dotLus);
         }
         public async Task<IActionResult> Edit(long id)

@@ -4,7 +4,57 @@
     Layout = null;
     ViewData["Title"] = "Quản lý đợt lũ";
     int counter = 1;
+    var currentPage = ViewBag.CurrentPage ?? 1; // Default to page 1 if not set
+    var totalPages = ViewBag.TotalPages ?? 1; // Default to 1 if not set
 }
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+        .pagination a {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: black;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 4px;
+        }
+
+            .pagination a:hover {
+                background-color: #98E0FF;
+            }
+
+    .content .pagination a.active {
+        background-color: #98E0FF;
+        color: white;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: #98E0FF;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+        .button.delete {
+            background-color: #dc3545;
+        }
+</style>
 
 <html lang="en">
 <head>
@@ -19,26 +69,27 @@
         <div class="sidebar">
             <div class="logo">
                 <img src="/img/logo.png" alt="Logo" style="width: 80px;">
-                <span>HUYỆN HOA VÀNG</span>
+                <img src="~/img//HUYỆN HÒA VANG.png" alt="Tenlogo"/>
+                <!--<span>HUYỆN HOA VÀNG</span>-->
             </div>
             <ul class="menu">
                 <li><a href="#"><img src="/img/home.png" alt="Home"> Tổng quan</a></li>
-                <li><a href="#"><img src="/img/danhmuc.png" alt="Category"> Danh mục hàng hóa</a></li>
+                <li><a href="#"><img src="/img/taikhoan.png" alt="Account"> Quản lý tài khoản</a></li>
                 <li><a href="#" class="active"><img src="/img/dotlu.png" alt="Flood"> Quản lý đợt lũ</a></li>
+                <li><a href="#"><img src="/img/danhmuc.png" alt="Category"> Danh mục hàng hóa</a></li>
+                <li><a href="#"><img src="/img/ungho.png" alt="Support"> Quản lý ủng hộ</a></li>
                 <li class="dropdown">
                     <a href="#">
                         <img src="/img/thiethai.png" alt="Damage">
                         <span>Quản lý thiệt hại</span>
-                        <span><i class="fa-solid fa-angle-down angle"></i></span>
+                        <span><i class="fa-solid fa-angle-left"></i></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Danh mục thiệt hại</a></li>
-                        <li><a href="#">Chi tiết thiệt hại</a></li>
+                        <li><a href="@Url.Action("Index","CAPNHATTHIETHAI")">Chi tiết thiệt hại</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><img src="/img/ungho.png" alt="Support"> Quản lý ủng hộ</a></li>
                 <li><a href="#"><img src="/img/cuutro.png" alt="Rescue"> Quản lý cứu trợ</a></li>
-                <li><a href="#"><img src="/img/taikhoan.png" alt="Account"> Quản lý tài khoản</a></li>
                 <li><a href="#"><img src="/img/thongke.png" alt="Report"> Thống kê & báo cáo</a></li>
             </ul>
 
@@ -49,8 +100,8 @@
                     <h2>Quản lý đợt lũ</h2>
                 </div>
                 <div class="search-bar">
-                    <input type="text" placeholder="Search">
-                    <img src="/img/search.png" alt="Search" style="width: 15px;">
+                    <input type="text" id="searchTerm" placeholder="Search" onkeydown="handleSearch(event)">
+                    <i class="fa fa-search" onclick="search()"></i>
                 </div>
                 <div class="user-info">
                     <div class="user-section">
@@ -74,24 +125,33 @@
             <table>
                 <thead>
                     <tr>
-                        <th>STT</th>
-                        <th>Tên đợt lũ</th>
-                        <th>Ngày bắt đầu</th>
-                        <th>Ngày kết thúc</th>
-                        <th>Hành động</th>
+                        <th style="width:5%">STT</th>
+                        <th style="width:20%">Đợt lũ</th>
+                        <th style="width:20%">Ngày bắt đầu</th>
+                        <th style="width:20%">Ngày kết thúc</th>
+                        <th style="width:15%">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var dotLu in Model)
                     {
                         <tr>
-                            <td>@counter</td>
+                            <td>@((currentPage - 1) * ViewBag.PageSize +counter)</td>
                             <td>@dotLu.TenDotLu</td>
                             <td>@dotLu.NgayBatDau.ToShortDateString()</td>
-                            <td>@dotLu.NgayKetThuc.ToShortDateString()</td>
                             <td>
-                                <a href="@Url.Action("Edit", "DOTLU", new { id = dotLu.IdDotLu })" class="btn btn-primary">Edit</a>
-                                <a href="@Url.Action("Delete", "DOTLU", new { id = dotLu.IdDotLu })" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?');">Delete</a>
+                                @if (dotLu.NgayKetThuc.HasValue)
+                                {
+                                    <text>@dotLu.NgayKetThuc.Value.ToShortDateString()</text>
+                                }
+                                else
+                                {
+                                    <text></text> <!-- Trường NgayKetThuc là null, không hiển thị gì cả -->
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "DOTLU", new { id = dotLu.IdDotLu })" class="button">Edit</a>
+                                <a href="@Url.Action("Delete", "DOTLU", new { id = dotLu.IdDotLu })" class="button delete" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Delete</a>
                             </td>
                         </tr>
                         counter++;
@@ -100,9 +160,12 @@
                 </tbody>
             </table>
             <div class="pagination">
-                <button>❮</button>
-                <button>1</button>
-                <button>❯</button>
+                <a asp-action="Index" asp-route-page="@(currentPage - 1)">&lt;</a>
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    <a asp-action="Index" asp-route-page="@i">@i</a>
+                }
+                <a asp-action="Index" asp-route-page="@(currentPage + 1)">&gt;</a>
             </div>
         </div>
     </div>
@@ -110,12 +173,34 @@
 </html>
 
 <script>
-    const dropDown = document.querySelector(".dropdown a")
-    const dropDownMenu = document.querySelector(".dropdown .dropdown-menu")
-    const iconAngle = document.querySelector(".dropdown .angle")
+    const dropDown = document.querySelector(".dropdown a");
+    const dropDownMenu = document.querySelector(".dropdown .dropdown-menu");
+    const iconAngle = document.querySelector(".dropdown .fa-angle-left");
 
-    dropDown.addEventListener("click", () => {
-        dropDownMenu.classList.toggle("active")
-        iconAngle.classList.toggle("active")
-    })
+    dropDownMenu.style.display = "none";
+
+    dropDown.addEventListener("click", (event) => {
+        event.preventDefault();
+        dropDownMenu.classList.toggle("active");
+        iconAngle.classList.toggle("active");
+        if (dropDownMenu.classList.contains("active")) {
+            dropDownMenu.style.display = "block";
+        } else {
+            dropDownMenu.style.display = "none";
+        }
+    });
+</script>
+<script>
+    function search() {
+        var searchTerm = document.getElementById("searchTerm").value;
+
+        // Redirect to the Index action of your controller with the search term as a query parameter
+        window.location.href = '@Url.Action("Index", "DOTLU")' + '?searchTerm=' + searchTerm;
+    }
+
+    function handleSearch(event) {
+        if (event.key === 'Enter') {
+            search();
+        }
+    }
 </script>

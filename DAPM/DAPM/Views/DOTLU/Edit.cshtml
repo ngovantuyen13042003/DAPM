@@ -1,34 +1,48 @@
 ﻿@model DAPM.Models.TbDotLu
 
 @{
-    ViewData["Title"] = "Edit Flood Event";
+    ViewData["Title"] = "Cập nhật đợt lũ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <style>
-    .btn-primary {
-        margin-top: 5px;
+    .container {
+        margin-top: 50px;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
     }
 </style>
-<h1>Edit Flood Event</h1>
 
-<form asp-action="Edit" asp-controller="DOTLU" method="post" asp-route-id="@Model.IdDotLu">
-    @Html.AntiForgeryToken()
-    <input type="hidden" asp-for="IdDotLu" />
-    <div class="form-group">
-        <label asp-for="TenDotLu">Tên đợt lũ</label>
-        <input type="text" asp-for="TenDotLu" class="form-control" />
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <hr/>
+
+    <div class="col-md-12">
+        <form asp-action="Edit" asp-controller="DOTLU" method="post" asp-route-id="@Model.IdDotLu">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label asp-for="IdDotLu">ID Đợt lũ</label>
+                <input type="text" asp-for="IdDotLu" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="TenDotLu">Đợt lũ</label>
+                <input type="text" asp-for="TenDotLu" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayBatDau">Ngày bắt đầu</label>
+                <input type="date" asp-for="NgayBatDau" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayKetThuc">Ngày kết thúc</label>
+                <input type="date" asp-for="NgayKetThuc" class="form-control" />
+            </div>
+            <div class="btn">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <button type="button" class="btn btn-secondary" onclick="window.history.back();">Hủy</button>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <label asp-for="NgayBatDau">Ngày bắt đầu</label>
-        <input type="date" asp-for="NgayBatDau" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="NgayKetThuc">Ngày kết thúc</label>
-        <input type="date" asp-for="NgayKetThuc" class="form-control" />
-    </div>
-    <div class="btn">
-        <button type="submit" class="btn btn-primary">Lưu</button>
-        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Hủy</button>
-    </div>
-</form>
+</div>

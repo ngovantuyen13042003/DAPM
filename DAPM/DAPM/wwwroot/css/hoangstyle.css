@@ -11,13 +11,12 @@
     min-height: 100vh;
 }
 
-/* Adjust the sidebar and dropdown menu for proper alignment and functionality */
 .sidebar {
-    width: 220px; /* Adjusted width */
+    width: 220px;
     background-color: #f4f4f4;
     padding: 20px;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-    overflow: hidden; /* Ensures nothing overflows out of the sidebar */
+    overflow: hidden;
 }
 
 .logo {
@@ -27,23 +26,22 @@
 }
 
     .logo img {
-        margin-right: 10px; /* Space between logo and text */
+        margin-right: 10px;
     }
 
     .logo span {
-        font-size: 18px; /* Increased font size */
-        font-weight: bold; /* Make text bold */
+        font-size: 18px;
+        font-weight: bold;
     }
-
 
 .menu {
     list-style-type: none;
     padding: 0;
-    margin: 0; /* Resets any default margin */
+    margin: 0;
 }
 
     .menu li {
-        position: relative; /* Needed for absolute positioning of the dropdown */
+        position: relative;
     }
 
         .menu li a {
@@ -54,8 +52,8 @@
             text-decoration: none;
             color: black;
             font-weight: bold;
-            background-color: #f4f4f4; /* Ensures consistent background */
-            width: 100%; /* Ensures the link uses the full width of its container */
+            background-color: #f4f4f4;
+            width: 100%;
         }
 
     .menu .dropdown a span i {
@@ -67,10 +65,14 @@
         height: 20px;
     }
 
-    .menu li a.active,
+    .menu li a.active {
+        background-color: #FFCC98; /* Màu xanh dương cho mục active */
+        color: #333; /* Màu trắng cho chữ khi mục active */
+    }
+
     .menu li a:hover {
-        background-color: #007bff;
-        color: white;
+        background-color: #d3d3d3; /* Màu ghi cho mục hover */
+        color: #333; /* Màu chữ khi hover */
     }
 
 .dropdown-menu {
@@ -78,14 +80,6 @@
 }
 
     .dropdown-menu.active {
-        /* display: none;
-    position: absolute;     
-    top: 100%; 
-    left: 0;
-    right: 0; 
-    background-color: #f4f4f4;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1000; */
         display: none;
     }
 
@@ -94,23 +88,12 @@
         display: block;
         text-decoration: none;
         color: black;
-        white-space: nowrap; /* Ensures text doesn't wrap */
+        white-space: nowrap;
     }
 
-.dropdown a .angle.active {
-    transform: rotate(90deg)
+.dropdown a .fa-angle-left.active {
+    transform: rotate(-90deg)
 }
-
-/* .menu li:hover .dropdown-menu {
-    display: block; /* Shows the dropdown when parent is hovered */
-/* } */
-
-/* Ensuring no element is hidden under the dropdown */
-/* .menu li:not(:hover) .dropdown-menu {
-    display: none; /* Hides the dropdown when not hovering */
-/* } */
-
-
 
 .content {
     flex-grow: 1;
@@ -126,7 +109,6 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     border-radius: 5px;
     padding: 0 10px;
-    /* border-bottom: 1px solid #999; */
 }
 
 .header-title {
@@ -201,7 +183,7 @@
 }
 
     .table-header h1 {
-        margin-bottom: 10px; /* Space between title and button */
+        margin-bottom: 10px;
     }
 
 .btn-add {
@@ -231,19 +213,3 @@ th, td {
 th {
     background-color: #f0f0f0;
 }
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-    .pagination button {
-        padding: 5px 10px;
-        margin: 0 5px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }

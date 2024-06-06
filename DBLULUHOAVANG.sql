@@ -1,19 +1,19 @@
-﻿Create database dbLuLutHoaVang2
-drop database dbLuLutHoaVang2
+﻿Create database dbLuLutHoaVang
+drop database dbLuLutHoaVang
 go
-use dbLuLutHoaVang2
+use dbLuLutHoaVang
 go
 create table tbTaiKhoan
 (
 	idTaiKhoan bigint IDENTITY(1,1) not null primary key,	
-	tenDangNhap varchar(50) not null unique ,
+	tenDangNhap varchar(50) not null,
 	matKhau varchar(50) not null,
 	quyen nvarchar(50) not null,
 	hoVaTen nvarchar(100) null,
 	email varchar(50) unique check (email like '%@%') null,
 	sdt varchar(11) null unique,
 	diaChi nvarchar(50) null,
-	tenPhuong nvarchar null
+	tenPhuong nvarchar(100) null
 )
 go
 create table tbDanhMuc
@@ -26,9 +26,9 @@ go
 create table tbDotLu
 (
 	idDotLu bigint IDENTITY(1,1) not null primary key,
-	tenDotLu nvarchar(100) NOT NULL unique,
+	tenDotLu nvarchar(100) NOT NULL,
 	ngayBatDau datetime NOT NULL,
-	ngayKetThuc datetime NOT NULL,
+	ngayKetThuc datetime NULL,
 	check (ngayKetThuc >= ngayBatDau)
 )
 go
@@ -115,6 +115,7 @@ create table tbDotCuuTro
 go
 create table tbChiTietHangUngHo
 (
+	idChiTietHangUngHo bigint IDENTITY(1,1) not null primary key,
 	idHangHoa bigint not null foreign key references tbHangHoa(idHangHoa)
 	on update
 			cascade
@@ -125,7 +126,6 @@ create table tbChiTietHangUngHo
 			cascade
 	on delete
 			cascade,
-	primary key(idHangHoa,idDonDK),
 	soLuong int
 )
 go

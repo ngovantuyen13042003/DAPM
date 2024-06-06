@@ -1,0 +1,47 @@
+﻿@model DAPM.Models.TbMucDoThietHai
+
+@{
+    ViewData["Title"] = "Cập nhật danh mục thiệt hại";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="IdMucDo" />
+                <div class="form-group">
+                    <label asp-for="MucThietHai" class="control-label"></label>
+                    <input asp-for="MucThietHai" class="form-control" />
+                    <span asp-validation-for="MucThietHai" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MoTa" class="control-label"></label>
+                    <input asp-for="MoTa" class="form-control" />
+                    <span asp-validation-for="MoTa" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

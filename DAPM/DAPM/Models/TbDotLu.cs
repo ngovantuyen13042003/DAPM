@@ -11,7 +11,7 @@ public partial class TbDotLu
 
     public DateTime NgayBatDau { get; set; }
 
-    public DateTime NgayKetThuc { get; set; }
+    public DateTime? NgayKetThuc { get; set; }
 
     public virtual ICollection<TbBaiDang> TbBaiDangs { get; set; } = new List<TbBaiDang>();
 

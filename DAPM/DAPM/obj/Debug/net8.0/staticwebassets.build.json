@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qC3DtuJlrVxE3piGd27Ey7KWp3Yd5JOREqXmEEt8gjQ=",
+  "Hash": "dI3tSwKLNKm89ePy+TcaVKJlMkieBm8dVxw0f0qRQMg=",
   "Source": "DAPM",
   "BasePath": "_content/DAPM",
   "Mode": "Default",
@@ -1022,6 +1022,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\home.png"
+    },
+    {
+      "Identity": "D:\\hoang\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\HUYỆN HÒA VANG.png",
+      "SourceId": "DAPM",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\hoang\\DAPM\\DAPM\\DAPM\\wwwroot\\",
+      "BasePath": "_content/DAPM",
+      "RelativePath": "img/HUYỆN HÒA VANG.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\HUYỆN HÒA VANG.png"
     },
     {
       "Identity": "D:\\hoang\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\logo.jpeg",
