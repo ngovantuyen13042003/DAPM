@@ -7,14 +7,17 @@
 @{
     Layout = null;
 }
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh Sách Hàng Ủng Hộ</title>
-    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/css/Product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -34,7 +37,7 @@
                     <li><a href="#">Cập nhật cứu trợ</a></li>
 
                     <ul>
-                        <li><a href="#">Danh sách đăng ký</a></li>
+                        <li><a href="/UngHo/Index">Danh sách đơn đăng ký ủng hộ</a></li>
                         <li><a href="#">Hàng hóa ủng hộ</a></li>
                     </ul>
               
@@ -63,7 +66,7 @@
                 <div class="box-add-btn" >
                     <button class="add-button" style="right: 0; background-color:  #32CD32"> <a style="text-decoration: none ; color: white; height: 100%; width: 100%" href="/Product/AddProduct">Thêm</a> </button>
                     </div>
-                <table style="overflow: auto;">
+                <table class="" style="width: 100%">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -90,8 +93,9 @@
                                 <td>@item.MoTa</td>
                                 <td>@item.DonViTinh</td>
                                 <td>
+                                    <a class="detail-button" style="background-color: #ffc107; text-decoration: none; padding: 7px 20px;border: none;border-radius: 10px;    border: none;transition: background-color 0.3s ease; color: white" href="/Product/DetailsProduct?id=@item.IdHangHoa">Chi tiết</a>
                                     <a class="add-button" style="background-color: #007FFF; text-decoration: none" href="/Product/EditProduct?id=@item.IdHangHoa">Sửa</a>
-                                    <a class="delete-button-a" style="background-color: #FF0000  ; text-decoration: none; padding: 10px 20px;border: none;border-radius: 10px;    border: none;transition: background-color 0.3s ease; color: white" href="/Product/DeleteProduct?id=@item.IdHangHoa">Delete</a>
+                                    <a class="delete-button-a" style="background-color: #FF0000  ; text-decoration: none; padding: 7px 20px;border: none;border-radius: 10px;    border: none;transition: background-color 0.3s ease; color: white" href="/Product/DeleteProduct?id=@item.IdHangHoa">Delete</a>
                                 </td>
                             </tr>
                         }
@@ -103,8 +107,8 @@
                     <ul class="pagination">
                         @for (int i = 1; i <= Model.PageCount; i++)
                         {
-                            <li style=" list-style-type: none ;padding: 6px 10px; margin: 0 5px; border: none; cursor: pointer; background-color: #ccc; border-radius: 5px; ">
-                                <a style="text-decoration: none; color: black"  href="@Url.Action("Product", "Product", new { page = i})" class="page-link">@i</a>
+                            <li style=" list-style-type: none ; border: none; cursor: pointer;   ">
+                                <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc;  margin: 0 5px;" href="@Url.Action("Product", "Product", new { page = i})" class="page-link">@i</a>
                             </li>
                         }
                     </ul>

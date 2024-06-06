@@ -1,0 +1,70 @@
+﻿@model DAPM.Models.TbDotLu
+
+@{
+    ViewData["Title"] = "Thêm Đợt Lũ";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
+}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<style>
+    .btn{
+        margin-top:5px;
+    }
+</style>
+
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+
+    <form asp-action="Create" method="post">
+        <div>
+            <label asp-for="TenDotLu">Đợt lũ</label>
+            <input asp-for="TenDotLu" class="form-control" />
+            <span asp-validation-for="TenDotLu" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="NgayBatDau">Ngày bắt đầu</label>
+            <input asp-for="NgayBatDau" class="form-control" type="date" id="startDateInput" onchange="validateStartDate()" />
+            <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+            <div id="dateErrorMessage" style="color: red; display: none;">Ngày bắt đầu phải nhỏ hơn ngày hiện tại.</div>
+        </div>
+
+        <div>
+            <label asp-for="NgayKetThuc">Ngày kết thúc</label>
+            <input asp-for="NgayKetThuc" class="form-control" type="date" />
+            <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
+        </div>
+        <div class="btn">
+            <button type="submit" class="btn btn-primary" onclick="return validateStartDate()">Thêm</button>
+            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Hủy</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function validateStartDate() {
+        var startDateInput = document.getElementById('startDateInput').value;
+        var startDate = new Date(startDateInput);
+        var currentDate = new Date();
+
+        if (startDate > currentDate) {
+            document.getElementById('dateErrorMessage').style.display = 'block';
+            return false;
+        } else {
+            document.getElementById('dateErrorMessage').style.display = 'none';
+            return true;
+        }
+    }
+</script>
+

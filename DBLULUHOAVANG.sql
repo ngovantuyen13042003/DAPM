@@ -16,6 +16,9 @@ create table tbTaiKhoan
 	tenPhuong nvarchar null
 )
 go
+alter table tbTaiKhoan
+alter column tenPhuong nvarchar(255)
+go
 create table tbDanhMuc
 (
 	idDanhMuc bigint IDENTITY(1,1) not null primary key,
@@ -31,6 +34,12 @@ create table tbDotLu
 	ngayKetThuc datetime NOT NULL,
 	check (ngayKetThuc >= ngayBatDau)
 )
+go
+
+alter table tbDotLu
+alter column ngayKetThuc datetime null
+
+
 go
 create table tbBaiDang
 (
@@ -355,6 +364,16 @@ values
     ('url_file_3', 3),
     ('url_file_4', 4),
     ('url_file_5	', 5);
+
+go
+--tbChiTietHangCuuTro
+insert into tbChiTietHangCuuTro(idDotCuuTro, idHangHoa, idTaiKhoan, soLuong)
+values(5, 30018 ,3,100),
+		(4, 30017 ,2,500),
+		(3, 30016 ,5,50),
+		(2, 30015 ,1,800),
+		(1, 30014 ,3,1000)
+
 
 
 --Trigger cập nhật số lượng hiện còn (tbHangHoa)khi thêm hàng cứu trợ (tbChiTietHangCuuTro)

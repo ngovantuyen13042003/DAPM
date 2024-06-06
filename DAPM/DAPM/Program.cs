@@ -1,5 +1,6 @@
 using DAPM.Data;
 using DAPM.Services;
+using DAPM.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,13 @@ builder.Services.AddDbContext<DbLuLutHoaVangContext>(options =>
 
 // add services
 builder.Services.AddScoped<HangHoaService>();
-builder.Services.AddScoped<DanhMucService>();   
+builder.Services.AddScoped<DanhMucService>();
+builder.Services.AddScoped<UngHoService>();
+builder.Services.AddScoped<DotLuService>();
+builder.Services.AddScoped<DonDKService>();
+builder.Services.AddScoped<ChiTietHangUngHoService>();
+
+
 
 
 

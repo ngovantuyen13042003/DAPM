@@ -1,1 +1,66 @@
-﻿
+﻿@{
+    Layout = null;
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lũ lụt Hòa Vang - Phường</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Favicon -->
+    <link href="~/assets/img/favicon.png" rel="icon">
+
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="/img/logo.png" alt="Logo" style="width: 80px;">
+                <span>HUYỆN HÒA VANG</span>
+            </div>
+            <ul class="menu">
+                <li><a href="#"><img src="/img/home.png" alt="Home"> Tổng quan</a></li>
+                <li class="dropdown">
+                    <a href="#">
+                        <img src="/img/thiethai.png" alt="Damage">
+                        <span>Quản lý thiệt hại</span>
+                        <span><i class="fa-solid fa-angle-down angle"></i></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Danh mục thiệt hại</a></li>
+                        <li><a href="#">Chi tiết thiệt hại</a></li>
+                    </ul>
+                </li>
+                
+            </ul>
+
+        </div>
+        <div class="content">
+            <div class="header">
+                <div class="header-title">
+                    <h2>Quản lý thiệt hại</h2>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                    <img src="/img/search.png" alt="Search" style="width: 15px;">
+                </div>
+                <div class="user-info">
+                    <div class="user-section">
+                        <img src="/img/user.png" alt="User" style="width: 24px;">
+                        <span>Admin</span>
+                    </div>
+                    <div class="notification-section">
+                        <img src="/img/notifi.png" alt="Notifications" style="width: 24px;">
+                        <span class="notification-badge">1</span>
+                        <!-- <div class="notification-badge"></div>  -->
+                    </div>
+                    <div class="settings-section">
+                        <img src="/img/setting.png" alt="Settings" style="width: 24px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

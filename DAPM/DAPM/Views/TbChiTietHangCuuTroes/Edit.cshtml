@@ -1,0 +1,25 @@
+﻿@model DAPM.Models.ViewModels.TbChiTietHangCuuTroViewModel
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <input asp-for="IdHangHoa" class="form-control" readonly hidden />
+        <span asp-validation-for="IdHangHoa" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input asp-for="IdTaiKhoan" class="form-control" readonly hidden />
+        <span asp-validation-for="IdTaiKhoan" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input asp-for="IdDotCuuTro" class="form-control" value="@ViewData["SoLuong"]" />
+        <span asp-validation-for="IdDotCuuTro" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SoLuong" class="control-label"></label>
+        <input asp-for="SoLuong" class="form-control" value="@ViewData["SoLuong"]" />
+        <span asp-validation-for="SoLuong" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Lưu" class="btn btn-primary" />
+    </div>
+</form>

@@ -1,0 +1,158 @@
+﻿@model IEnumerable<DAPM.Models.TbMucDoThietHai>
+
+@{
+    int counter = 1;
+    ViewData["Title"] = "Danh mục thiệt hại";
+    Layout = null;
+}
+
+<style>
+    .button {
+        display: inline-block;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: #98E0FF;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+        .button.delete {
+            background-color: #dc3545;
+        }
+</style>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý danh mục thiệt hại</title>
+    <link rel="stylesheet" href="~/css/hoangstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="/img/logo.png" alt="Logo" style="width: 80px;">
+                <img src="~/img//HUYỆN HÒA VANG.png" alt="Tenlogo"/>
+                <!--<span>HUYỆN HOA VÀNG</span>-->
+            </div>
+            <ul class="menu">
+                <li><a href="#"><img src="/img/home.png" alt="Home"> Tổng quan</a></li>
+                <li><a href="#"><img src="/img/taikhoan.png" alt="Account"> Quản lý tài khoản</a></li>
+                <li><a href="@Url.Action("Index","DOTLU")"><img src="/img/dotlu.png" alt="Flood"> Quản lý đợt lũ</a></li>
+                <li><a href="#"><img src="/img/danhmuc.png" alt="Category"> Danh mục hàng hóa</a></li>
+                <li><a href="#"><img src="/img/ungho.png" alt="Support"> Quản lý ủng hộ</a></li>
+                <li class="dropdown">
+                    <a href="#">
+                        <img src="/img/thiethai.png" alt="Damage">
+                        <span>Quản lý thiệt hại</span>
+                        <span><i class="fa-solid fa-angle-left"></i></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class="active">Danh mục thiệt hại</a></li>
+                        <li><a href="@Url.Action("Index","CAPNHATTHIETHAI")">Chi tiết thiệt hại</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><img src="/img/cuutro.png" alt="Rescue"> Quản lý cứu trợ</a></li>
+                <li><a href="#"><img src="/img/thongke.png" alt="Report"> Thống kê & báo cáo</a></li>
+            </ul>
+
+        </div>
+        <div class="content">
+            <div class="header">
+                <div class="header-title">
+                    <h2>Quản lý thiệt hại</h2>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="searchTerm" placeholder="Search" onkeydown="handleSearch(event)">
+                    <i class="fa fa-search" onclick="search()"></i>
+                </div>
+                <div class="user-info">
+                    <div class="user-section">
+                        <img src="/img/user.png" alt="User" style="width: 24px;">
+                        <span>Admin</span>
+                    </div>
+                    <div class="notification-section">
+                        <img src="/img/notifi.png" alt="Notifications" style="width: 24px;">
+                        <span class="notification-badge">1</span>
+                        <!-- <div class="notification-badge"></div>  -->
+                    </div>
+                    <div class="settings-section">
+                        <img src="/img/setting.png" alt="Settings" style="width: 24px;">
+                    </div>
+                </div>
+            </div>
+            <div class="table-header">
+                <h1>DANH SÁCH ĐỢT LŨ</h1>
+                <button class="btn-add" onclick="location.href='@Url.Action("Create", "DanhMucThietHai")'">Thêm</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:5%">STT</th>
+                        <th style="width:20%">Mức thiệt hại</th>
+                        <th style="width:60%">Mô tả</th>
+                        <th style="width:15%">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var mucthiethai in Model)
+                    {
+                        <tr>
+                            <td>@counter</td>
+                            <td>@mucthiethai.MucThietHai</td>
+                            <td>@mucthiethai.MoTa</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "DanhMucThietHai", new { id = mucthiethai.IdMucDo })" class="button">Edit</a>
+                                <a href="@Url.Action("Delete", "DanhMucThietHai", new { id = mucthiethai.IdMucDo })" class="button delete" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Delete</a>
+                            </td>
+                        </tr>
+                        counter++;
+                    }
+                    <!-- More rows here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const dropDown = document.querySelector(".dropdown a");
+    const dropDownMenu = document.querySelector(".dropdown .dropdown-menu");
+    const iconAngle = document.querySelector(".dropdown .fa-angle-left");
+
+    dropDownMenu.style.display = "none";
+
+    dropDown.addEventListener("click", (event) => {
+        event.preventDefault();
+        dropDownMenu.classList.toggle("active");
+        iconAngle.classList.toggle("active");
+        if (dropDownMenu.classList.contains("active")) {
+            dropDownMenu.style.display = "block";
+        } else {
+            dropDownMenu.style.display = "none";
+        }
+    });
+</script>
+<script>
+    function search() {
+        var searchTerm = document.getElementById("searchTerm").value;
+
+        // Redirect to the Index action of your controller with the search term as a query parameter
+        window.location.href = '@Url.Action("Index", "DanhMucThietHai")' + '?searchTerm=' + searchTerm;
+    }
+
+    function handleSearch(event) {
+        if (event.key === 'Enter') {
+            search();
+        }
+    }
+</script>
+
+

@@ -1,4 +1,4 @@
-﻿@model List<DAPM.Models.TbDanhMuc>
+﻿@model Tuple<List<DAPM.Models.TbDanhMuc>, List<DAPM.ViewModels.DonDangKyViewModel>>
 
 
 <link href="~/css/AddProduct.css" rel="stylesheet" />
@@ -8,18 +8,19 @@
 
 <form class="form" method="post" action="/Product/AddProduct">
     <div class="row" style="justify-content: center">
-        <div class="col-lg-6">
-            
+
+        <div class="col-lg-6">          
             <div class="form-group">
                 <label>Danh mục</label>
                 <select name="iddanhmuc">
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Item1)
                     {
                         <option value="@item.IdDanhMuc">@item.TenDanhMuc</option>
                     }
                 </select>
             </div>
         </div>
+
         <div class="col-lg-6">
             <div class="form-group">
                 <label>Tên hàng hóa</label>
@@ -35,7 +36,7 @@
         <div class="col-lg-6">
             <div class="form-group">
                 <label>Mô tả</label>
-                <input type="text" name="mota" required="">
+                <input type="text" name="mota" >
             </div>
         </div>
         <div class="col-lg-6">
@@ -44,6 +45,21 @@
                 <input type="text" name="donvitinh" required="">
             </div>
         </div>
+
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Người ủng hộ</label>
+                <select name="iddondk">
+                    @foreach (var item in Model.Item2)
+                    {
+                        <option value="@item.IdDonDk">@(item.fullname == null ? item.username : item.fullname)</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+
         
         <div class="col-lg-6 btn-action" >
             <div class="form-group login-btn">

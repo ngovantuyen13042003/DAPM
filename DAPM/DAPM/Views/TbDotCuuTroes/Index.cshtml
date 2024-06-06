@@ -1,0 +1,397 @@
+﻿@model IEnumerable<DAPM.Models.TbDotCuuTro>
+
+@{
+    ViewData["Title"] = "Quản lý đợt cứu trợ";
+}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar">
+            <div class="sidebar-header">
+                <h3> <img src="~/Image/logoHuyen.jpg" alt="" class="logo">HUYỆN HÒA VANG</h3>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <img src="~/Image/TongQuan-removebg-preview.png" alt="" class="menu-icon">Tổng quan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <img src="~/Image/DMHangHoa-removebg-preview.png" alt="" class="menu-icon">Danh mục hàng hóa
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "tbDotLus")">
+                        <img src="~/Image/QlyDotLu-removebg-preview.png" alt="" class="menu-icon">Quản lý đợt lũ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <img src="~/Image/QLyThietHai-removebg-preview.png" alt="" class="menu-icon">Quản lý thiệt hại
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <img src="~/Image/QLyUngHo-removebg-preview.png" alt="" class="menu-icon">Quản lý ủng hộ
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="qlCuuTroDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="~/Image/QLyCuuTro-removebg-preview.png" alt="" class="menu-icon">Quản lý đợt cứu trợ
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="qlCuuTroDropdown">
+                        <li><a class="dropdown-item active" href="#">Danh sách đợt cứu trợ</a></li>
+                        <li><a class="dropdown-item" href="@Url.Action("Index", "tbChiTietHangCuuTroes")">Phân bổ cứu trợ</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <img src="~/Image/QlyTaiKhoan-removebg-preview.png" alt="" class="menu-icon">Quản lý tài khoản
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <img src="~/Image/TKe-removebg-preview.png" alt="" class="menu-icon">Thống kê & báo cáo
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Main content -->
+        <div class="col-md-10 main-content">
+            <div class="row header align-items-center">
+                <div class="col-md-4">
+                    <h3>Quản lý đợt cứu trợ</h3>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <div class="col-md-4 d-flex justify-content-end align-items-center">
+                    <span class="admin-text"><img src="~/Image/admin-icon.jpg" alt="" class="admin-icon"> Admin</span>
+                    <img src="~/Image/notification_icon.jpg" alt="Notifications" class="notification-icon">
+                    <img src="~/Image/settings_icon.jpg" alt="Settings" class="settings-icon">
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>DANH SÁCH ĐỢT CỨU TRỢ</h2>
+                <a href="@Url.Action("Create")" class="btn btn-primary">Thêm</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-centered">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Đợt lũ</th>
+                            <th>Tên đợt cứu trợ</th>
+                            <th>Ngày bắt đầu</th>
+                            <th>Ngày kết thúc</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int stt = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <tr data-href="@Url.Action("Details", new { id = item.IdDotCuuTro })" class="clickable-row">
+                                <td>@stt</td>
+                                <td>@Html.DisplayFor(modelItem => item.IdDotLuNavigation.TenDotLu)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TenDotCuuTro)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NgayBatDau)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NgayKetThuc)</td>
+                                <td>
+                                    <a href="@Url.Action("Edit", new { id = item.IdDotCuuTro })"><img src="~/Image/edit_icon.jpg" alt="Edit"></a> |
+                                    <a href="@Url.Action("Delete", new { id = item.IdDotCuuTro })"><img src="~/Image/delete_icon.jpg" alt="Delete"></a>
+                                </td>
+                            </tr>
+                            stt++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 20px;
+        color: #0057BE;
+    }
+
+    .container-fluid {
+        padding: 0;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .sidebar {
+        background-color: white;
+        padding: 10px;
+        height: 100vh;
+        width: 20%;
+    }
+
+    .sidebar-header {
+        text-align: left;
+        padding: 3px 0;
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .nav {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .main-content {
+        padding: 20px;
+        width: 80%;
+    }
+
+    .nav-item {
+        margin-bottom: 5px;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background-color: white;
+        color: #333;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        text-align: left;
+    }
+
+    .nav-link:hover {
+        background-color: lightgray;
+    }
+    .nav-link.active {
+        font-weight: bold;
+        color: black;
+        background-color: #d1ecf1;
+    }
+
+    .dropdown-item.active {
+        font-weight: bold;
+        color: black;
+        background-color: #d1ecf1;
+    }
+
+    .menu-icon {
+        margin-right: 10px;
+        height: 20px;
+        width: 20px;
+    }
+
+    a:hover img {
+        opacity: 0.7;
+    }
+
+    img {
+        height: 15px;
+        width: 15px;
+    }
+
+    .logo {
+        margin-right: 10px;
+        height: 40px;
+        width: 40px;
+    }
+
+    .btn-primary {
+        background-color: #98E0FF;
+        color: black;
+        margin-left: 82%;
+        margin-bottom: 20px;
+        border: solid 1px black;
+        width: 80px;
+        height: 30px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .table-centered {
+        margin: 0 auto;
+        text-align: center;
+        width: 90%;
+    }
+
+    .table-responsive {
+        display: flex;
+        justify-content: center;
+    }
+
+    table.table {
+        width: 100%;
+    }
+
+    table.table th, table.table td {
+        text-align: center;
+        vertical-align: middle;
+        height: 30px;
+    }
+
+    .clickable-row {
+        cursor: pointer;
+    }
+
+    .table-centered tbody tr {
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .table-centered tbody tr:nth-child(odd) {
+        background-color: #f8f9fa;
+    }
+
+    .table-centered tbody tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+
+    .dropdown-menu {
+        display: none;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .dropdown-item {
+        padding: 10px 20px;
+        background-color: white;
+        color: #333;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.3s;
+    }
+
+    .dropdown-item:hover {
+        background-color: lightgray;
+    }
+
+    .dropdown-toggle::after {
+        content: "";
+        border-top: .3em solid;
+        border-right: .3em solid transparent;
+        border-bottom: 0;
+        border-left: .3em solid transparent;
+        margin-left: .5em;
+        display: inline-block;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+    }
+
+    .dropdown-submenu {
+        display: none;
+    }
+
+    .dropdown-submenu.show {
+        display: block;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .header {
+        background-color: white;
+        padding: 10px 20px;
+        border-bottom: 1px solid #dee2e6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header h3 {
+        margin: 0;
+     }
+
+    .form-control {
+        width: 100%;
+        margin-left: 50px;
+    }
+
+    .admin-icon {
+        margin-right: 15px;
+    }
+
+    .notification-icon, .settings-icon {
+        width: 24px;
+        height: 24px;
+        margin-left: 15px;
+        cursor: pointer;
+    }
+
+    .col-md-4 {
+        margin-left: 30px;
+    }
+
+    .admin-icon {
+        height: 30px;
+        width: 30px;
+    }
+
+    .admin-text {
+        font-weight: bold;
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+        var dropdowns = document.querySelectorAll('.dropdown-toggle');
+        dropdowns.forEach(function (dropdown) {
+            dropdown.addEventListener('click', function (event) {
+                event.preventDefault();
+                var nextEl = dropdown.nextElementSibling;
+                if (nextEl && nextEl.classList.contains('dropdown-menu')) {
+                    nextEl.classList.toggle('show');
+                }
+            });
+        });
+
+        
+        var rows = document.querySelectorAll(".clickable-row");
+        rows.forEach(function (row) {
+            row.addEventListener("click", function () {
+                window.location = this.dataset.href;
+            });
+        });
+
+        
+        var currentUrl = window.location.href;
+        if (currentUrl.includes("/tbDotCuus")) {
+            document.getElementById("qlCuuTroDropdown").classList.add("active");
+            var dropdownMenu = document.getElementById("qlCuuTroDropdown").nextElementSibling;
+            if (dropdownMenu) {
+                dropdownMenu.classList.add("show");
+                var dropdownItems = dropdownMenu.querySelectorAll(".dropdown-item");
+                dropdownItems.forEach(function (item) {
+                    if (item.href === currentUrl) {
+                        item.classList.add("active");
+                    }
+                });
+            }
+        }
+    });
+</script>

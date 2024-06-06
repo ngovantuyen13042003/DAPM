@@ -5,7 +5,6 @@ using DAPM.Services;
 using DAPM.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 using X.PagedList;
 
 namespace DAPM.Controllers
@@ -15,12 +14,18 @@ namespace DAPM.Controllers
         private readonly HangHoaService hangHoaService;
         private readonly DanhMucService danhMucService;
         private readonly DbLuLutHoaVangContext mydb;
+        private readonly DonDKService donDKService;
+        private readonly ChiTietHangUngHoService chiTietHangUngService;
 
-        public ProductController(HangHoaService hangHoaService, DanhMucService danhMucService, DbLuLutHoaVangContext mydb)
+        public ProductController(HangHoaService hangHoaService, DanhMucService danhMucService, DbLuLutHoaVangContext mydb, DonDKService donDKService, ChiTietHangUngHoService chiTietHangUngService)
         {
             this.hangHoaService = hangHoaService;
             this.danhMucService = danhMucService;
             this.mydb = mydb;
+            this.donDKService = donDKService;
+            this.donDKService = donDKService;
+            this.chiTietHangUngService = chiTietHangUngService;
+            this.chiTietHangUngService = chiTietHangUngService;
         }
 
 
@@ -53,13 +58,36 @@ namespace DAPM.Controllers
         [HttpGet]
         public IActionResult AddProduct()
         {
-            var data = danhMucService.getAll();
+            var dm = danhMucService.getAll();
+            var donDK = donDKService.getAll();
+
+            var data = new Tuple<List<TbDanhMuc>, List<DonDangKyViewModel>>(dm, donDK);
+
             return View(data);
         }
         [HttpPost]
-        public IActionResult AddProduct(TbHangHoa hanghoa) 
+        public  IActionResult  AddProduct(HangHoaViewModel hanghoa) 
         {
-            hangHoaService.Add(hanghoa);
+            TbHangHoa hh = new TbHangHoa();
+            hh.IdHangHoa = hanghoa.IdHangHoa;
+            hh.MoTa = hanghoa.MoTa;
+            hh.SoLuong = hanghoa.SoLuong; ;
+            hh.DonViTinh =  hanghoa.DonViTinh;
+            hh.TenHangHoa = hanghoa.TenHangHoa;
+            hh.IdDanhMuc = hanghoa.IdDanhMuc;
+
+            hangHoaService.Add(hh);
+
+            if(hangHoaService.getById(hh.IdHangHoa) != null)
+            {
+                TbChiTietHangUngHo ct = new TbChiTietHangUngHo();
+                ct.IdHangHoa = hh.IdHangHoa;
+                ct.IdDonDk = hanghoa.idDonDK;
+                ct.SoLuong = hanghoa.SoLuong;
+
+                chiTietHangUngService.save(ct);
+            }
+
             return RedirectToAction("Product");
         }
 
@@ -97,5 +125,18 @@ namespace DAPM.Controllers
           
             return RedirectToAction("Product", "Product");
         }
+
+
+        [HttpGet]
+        public IActionResult DetailsProduct(long id)
+        {
+            var data = hangHoaService.GetDetailsProduct(id);
+            if (data == null)
+            {
+                return NotFound(); 
+            }
+            return View(data);
+        }
+
     }
 }

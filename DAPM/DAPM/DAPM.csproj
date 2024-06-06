@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\css\styles.css" />
+    <Content Remove="wwwroot\css\Product.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,12 +23,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
+    <None Include="wwwroot\css\Product.css" />
+    <None Include="wwwroot\img\logo.jpeg" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\styles.css" />
-    <None Include="wwwroot\img\logo.jpeg" />
+    <Content Update="wwwroot\img\logo.jpeg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

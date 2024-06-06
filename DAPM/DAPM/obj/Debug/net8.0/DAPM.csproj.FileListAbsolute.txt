@@ -258,3 +258,5 @@ D:\Project\DAPM\DAPM\DAPM\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Window
 D:\Project\DAPM\DAPM\DAPM\bin\Debug\net8.0\X.PagedList.dll
 D:\Project\DAPM\DAPM\DAPM\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
 D:\Project\DAPM\DAPM\DAPM\obj\Debug\net8.0\DAPM.MvcApplicationPartsAssemblyInfo.cs
+D:\Project\DAPM\DAPM\DAPM\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Project\DAPM\DAPM\DAPM\obj\Debug\net8.0\scopedcss\projectbundle\DAPM.bundle.scp.css

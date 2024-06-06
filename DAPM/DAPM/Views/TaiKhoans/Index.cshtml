@@ -1,0 +1,124 @@
+﻿@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<DAPM.Models.TbTaiKhoan>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_nguyen.cshtml";
+}
+
+<div class="header">
+    <div class="header-title">
+        <h2>Quản lý tài khoản</h2>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search">
+        <img src="/img/search.png" alt="Search" style="width: 15px;">
+    </div>
+    <div class="user-info">
+        <div class="user-section">
+            <img src="/img/user.png" alt="User" style="width: 24px;">
+            <span>Admin</span>
+        </div>
+        <div class="notification-section">
+            <img src="/img/notifi.png" alt="Notifications" style="width: 24px;">
+            <span class="notification-badge">1</span>
+            <!-- <div class="notification-badge"></div>  -->
+        </div>
+        <div class="settings-section">
+            <img src="/img/setting.png" alt="Settings" style="width: 24px;">
+        </div>
+    </div>
+</div>
+<div class="table-header">
+    <h1>DANH SÁCH TÀI KHOẢN</h1>
+    
+    <a asp-action="Create" asp-controller="TaiKhoans" class="btn-add">
+        <i class="fa fa-plus me-2"></i> <span>Thêm mới</span>
+    </a>
+</div>
+<form asp-controller="TaiKhoans" asp-action="Index" class="filter">
+    <p>
+        Phân quyền: 
+        <select class="form-select" name="searchString">
+            <option value="all">Tất cả</option>
+            <option value="admin">CB Huyện</option>
+            <option value="subadmin">CB Phường</option>
+            <option value="volunteer">Mạnh thường quân</option>
+            <option value="citizen">Người dân</option>
+        </select>
+        <input type="submit" value="Lọc" class="btn-filter" />
+    </p>
+</form>
+<p>@TempData["Message"]</p>
+<table>
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên đăng nhập</th>
+            <th>Mật khẩu</th>
+            <th>Quyền</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>SDT</th>
+            <th>Địa chỉ</th>
+            <th>Tên phường</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var ind = 0;
+            foreach (var item in Model)
+            {
+
+                ind += 1;
+                var serialNumber = (Model.PageNumber - 1) * Model.PageSize + ind;
+                <tr>
+                    <td>@serialNumber</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenDangNhap)
+                    </td>
+                    <td>
+                        <input disabled type="password" value="@Html.DisplayFor(modelItem => item.MatKhau)" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quyen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoVaTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sdt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenPhuong)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="TaiKhoans" asp-route-id="@item.IdTaiKhoan" class="btn btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-controller="TaiKhoans" asp-route-id="@item.IdTaiKhoan" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</a>
+                        
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div>
+    <div class="hint-text">Showing <b>@Model.Count()</b> out of <b>@Model.PageSize</b> entries</div>
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="pagenum">
+                <a href="@Url.Action("Index", "TaiKhoans", new { page = i})">@i</a>
+            </li>
+        }
+    </ul>
+</div>

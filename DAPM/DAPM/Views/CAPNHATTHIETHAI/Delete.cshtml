@@ -1,0 +1,12 @@
+﻿@model DAPM.Models.TbChitietMucDoThietHai
+
+<h2>Bạn có chắc chắn muốn xóa bản ghi này?</h2>
+<div>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="IdMucDo" />
+        <input type="hidden" asp-for="IdTaiKhoan" />
+        <input type="hidden" asp-for="IdDotLu" />
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>

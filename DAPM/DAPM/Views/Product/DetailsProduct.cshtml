@@ -1,0 +1,32 @@
+﻿@model DAPM.ViewModels.DetailsProduct;
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết hàng hóa</title>
+    <link rel="stylesheet" href="~/css/ProductDetails.css">
+    <link href="https://unpkg.com/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="details-container">
+        <div class="box-close-btn"><button class="close-btn"><a href="/Product/Product" style="text-decoration: none">X</a></button></div>
+
+        <div class="header">
+            <h1>Chi tiết hàng hóa</h1>
+        </div>
+        
+        <div class="details-content">
+                <p><strong>Cá nhân / đơn vị ủng hộ:</strong>@(Model.fullname == null ? Model.username : Model.fullname)</p>
+                <p><strong>Ủng hộ cho đợt lũ:</strong> @Model.tenDotLu</p>
+                <p><strong>Danh mục hàng hóa:</strong> @Model.TenDanhMuc</p>
+                <p><strong>Tên hàng hóa :</strong> @Model.TenHangHoa</p>
+                <p><strong>Số lượng:</strong> <strong>@Model.SoLuong</strong> @Model.DonViTinh</p>
+                <p><strong>Mô tả:</strong> @Model.mota</p>
+        </div>
+    </div>
+</body>
+</html>

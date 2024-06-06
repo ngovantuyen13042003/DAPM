@@ -1,0 +1,42 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model string
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng nhập</title>
+    <!-- custom-theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Elegant Login Form Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //custom-theme  -->
+    <link rel="stylesheet" href="~/css/stylelogin.css">
+    <!-- Favicon -->
+    <link href="~/assets/img/faviconpng" rel="icon">
+    <!-- //font-awesome icons -->
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+<body>
+    <div class="logo">
+        <img src="/img/logo.png" alt="Logo" style="width: 80px;">
+        <span>HUYỆN HÒA VANG</span>
+    </div>
+    <div class="login w3_login">
+        <h2 class="login-header w3_header">Đăng nhập</h2>
+        <p style="color:red;">@TempData["Message"]</p>
+        <div class="w3l_grid">
+            <form class="login-container" method="post" asp-action="Login" asp-controller="Home">
+                <input type="text" placeholder="Username" name="usename" required>
+                <input type="password" placeholder="Password" name="password" required>
+                <input type="submit" value="Đăng nhập">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

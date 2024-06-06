@@ -1,0 +1,65 @@
+﻿@model DAPM.ViewModel.ThietHaiViewModel
+
+@{
+    ViewData["Title"] = "Cập nhật chi tiết mức độ thiệt hại";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
+}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="OldIdMucDo" type="hidden" />
+                <input asp-for="OldIdTaiKhoan" type="hidden" />
+                <input asp-for="OldIdDotLu" type="hidden" />
+
+                <div class="form-group">
+                    <label asp-for="IdMucDo" class="control-label">Mức thiệt hại</label>
+                    <select asp-for="IdMucDo" class="form-control" asp-items="ViewBag.IdMucDo"></select>
+                    <span asp-validation-for="IdMucDo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdTaiKhoan" class="control-label">Hộ gia đình</label>
+                    <select asp-for="IdTaiKhoan" class="form-control" asp-items="ViewBag.IdTaiKhoan"></select>
+                    <span asp-validation-for="IdTaiKhoan" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdDotLu" class="control-label">Đợt lũ</label>
+                    <select asp-for="IdDotLu" class="form-control" asp-items="ViewBag.IdDotLu"></select>
+                    <span asp-validation-for="IdDotLu" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mota" class="control-label">Mô tả</label>
+                    <textarea asp-for="Mota" class="form-control"></textarea>
+                    <span asp-validation-for="Mota" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

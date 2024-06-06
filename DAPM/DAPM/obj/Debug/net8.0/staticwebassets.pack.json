@@ -177,24 +177,168 @@
       "PackagePath": "staticwebassets\\js\\bootstrap.min.js.map"
     },
     {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\DAPM.bundle.scp.css",
+      "PackagePath": "staticwebassets\\DAPM.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\DMHangHoa-removebg-preview.png",
+      "PackagePath": "staticwebassets\\Image\\DMHangHoa-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\QLyCuuTro-removebg-preview.png",
+      "PackagePath": "staticwebassets\\Image\\QLyCuuTro-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\QLyThietHai-removebg-preview.png",
+      "PackagePath": "staticwebassets\\Image\\QLyThietHai-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\QLyUngHo-removebg-preview.png",
+      "PackagePath": "staticwebassets\\Image\\QLyUngHo-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\QlyDotLu-removebg-preview.png",
+      "PackagePath": "staticwebassets\\Image\\QlyDotLu-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\QlyTaiKhoan-removebg-preview.png",
+      "PackagePath": "staticwebassets\\Image\\QlyTaiKhoan-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\TKe-removebg-preview.png",
+      "PackagePath": "staticwebassets\\Image\\TKe-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\TongQuan-removebg-preview.png",
+      "PackagePath": "staticwebassets\\Image\\TongQuan-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\admin-icon.jpg",
+      "PackagePath": "staticwebassets\\Image\\admin-icon.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\delete_icon.jpg",
+      "PackagePath": "staticwebassets\\Image\\delete_icon.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\edit_icon.jpg",
+      "PackagePath": "staticwebassets\\Image\\edit_icon.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\logoHuyen.jpg",
+      "PackagePath": "staticwebassets\\Image\\logoHuyen.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\notification_icon.jpg",
+      "PackagePath": "staticwebassets\\Image\\notification_icon.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\Image\\settings_icon.jpg",
+      "PackagePath": "staticwebassets\\Image\\settings_icon.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\AddDonDK.css",
+      "PackagePath": "staticwebassets\\css\\AddDonDK.css"
+    },
+    {
       "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\AddProduct.css",
       "PackagePath": "staticwebassets\\css\\AddProduct.css"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\DsUngHo.css",
+      "PackagePath": "staticwebassets\\css\\DsUngHo.css"
     },
     {
       "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\EditProduct.css",
       "PackagePath": "staticwebassets\\css\\EditProduct.css"
     },
     {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\ProductDetails.css",
+      "PackagePath": "staticwebassets\\css\\ProductDetails.css"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\hoangstyle.css",
+      "PackagePath": "staticwebassets\\css\\hoangstyle.css"
+    },
+    {
       "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\stylelogin.css",
+      "PackagePath": "staticwebassets\\css\\stylelogin.css"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
     },
     {
       "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\HUYỆN HÒA VANG.png",
+      "PackagePath": "staticwebassets\\img\\HUYỆN HÒA VANG.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\cuutro.png",
+      "PackagePath": "staticwebassets\\img\\cuutro.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\danhmuc.png",
+      "PackagePath": "staticwebassets\\img\\danhmuc.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\dotlu.png",
+      "PackagePath": "staticwebassets\\img\\dotlu.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\home.png",
+      "PackagePath": "staticwebassets\\img\\home.png"
+    },
+    {
       "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\logo.jpeg",
       "PackagePath": "staticwebassets\\img\\logo.jpeg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\notifi.png",
+      "PackagePath": "staticwebassets\\img\\notifi.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\search.png",
+      "PackagePath": "staticwebassets\\img\\search.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\setting.png",
+      "PackagePath": "staticwebassets\\img\\setting.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\taikhoan.png",
+      "PackagePath": "staticwebassets\\img\\taikhoan.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\thiethai.png",
+      "PackagePath": "staticwebassets\\img\\thiethai.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\thongke.png",
+      "PackagePath": "staticwebassets\\img\\thongke.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\ungho.png",
+      "PackagePath": "staticwebassets\\img\\ungho.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\img\\user.png",
+      "PackagePath": "staticwebassets\\img\\user.png"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\js\\AddDonDK.js",
+      "PackagePath": "staticwebassets\\js\\AddDonDK.js"
     },
     {
       "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\js\\site.js",

@@ -1,0 +1,56 @@
+﻿<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lũ lụt Hòa Vang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Favicon -->
+    <link href="~/assets/img/favicon.png" rel="icon">
+
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="/img/logo.png" alt="Logo" style="width: 80px;">
+                <span>HUYỆN HÒA VANG</span>
+            </div>
+            <ul class="menu">
+                <li><a href="#"><img src="/img/home.png" alt="Home"> Tổng quan</a></li>
+                <li><a href="@Url.Action("Index", "TaiKhoans")"><img src="/img/taikhoan.png" alt="Account"> Quản lý tài khoản</a></li>
+                <li><a href="#"><img src="/img/dotlu.png" alt="Flood"> Quản lý đợt lũ</a></li>
+                <li><a href="@Url.Action("Index", "DanhMucs")"><img src="/img/danhmuc.png" alt="Category"> Danh mục hàng hóa</a></li>
+                <li class="dropdown">
+                    <a href="#">
+                        <img src="/img/thiethai.png" alt="Damage">
+                        <span>Quản lý thiệt hại</span>
+                        <span><i class="fa-solid fa-angle-down angle"></i></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Danh mục thiệt hại</a></li>
+                        <li><a href="#">Chi tiết thiệt hại</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><img src="/img/ungho.png" alt="Support"> Quản lý ủng hộ</a></li>
+                <li class="dropdown">
+                    <a href="#">
+                        <img src="/img/cuutro.png" alt="Rescue">
+                        <span>Quản lý cứu trợ</span>
+                        <span><i class="fa-solid fa-angle-down angle"></i></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Danh sách đợt cứu trợ</a></li>
+                        <li><a href="#">Phân bổ cứu trợ</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><img src="/img/thongke.png" alt="Report"> Thống kê & báo cáo</a></li>
+            </ul>
+
+        </div>
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

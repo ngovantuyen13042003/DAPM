@@ -1,0 +1,136 @@
+﻿@model DAPM.Models.TbDotCuuTro
+
+@{
+    ViewData["Title"] = "Edit";
+    
+}
+
+<h2>CẬP NHẬT ĐỢT CỨU TRỢ</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-container">
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IdDotCuuTro)
+
+            <div class="form-group">
+                @Html.Label("tenDotLu", "Tên Đợt Lũ", htmlAttributes: new { @class = "control-label" })
+                <div class="input-container">
+                    @Html.DropDownList("idDotLu", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdDotLuNavigation.TenDotLu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("tenDotCuuTro", "Tên Đợt Cứu Trợ", htmlAttributes: new { @class = "control-label" })
+                <div class="input-container">
+                    @Html.EditorFor(model => model.TenDotCuuTro, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.TenDotCuuTro, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("ngayBatDau", "Ngày bắt đầu", htmlAttributes: new { @class = "control-label" })
+                <div class="input-container">
+                    @Html.EditorFor(model => model.NgayBatDau, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.NgayBatDau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("ngayKetThuc", "Ngày kết thúc", htmlAttributes: new { @class = "control-label" })
+                <div class="input-container">
+                    @Html.EditorFor(model => model.NgayKetThuc, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.NgayKetThuc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="button-container">
+                    <input type="submit" value="Lưu" class="btn btn-save" />
+                    <button type="button" class="btn btn-back" onclick="window.history.back()">Quay lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .form-horizontal {
+        width: 50%;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+
+    .control-label {
+        margin-left: 10%;
+        text-align: start;
+    }
+
+    .input-container {
+        margin-left: 10%;
+    }
+
+    .form-control {
+        width: calc(100% - 20%);
+    }
+
+    .button-container {
+        text-align: center;
+    }
+
+    .error-message {
+        margin-top: 5px;
+    }
+
+    .btn-save {
+        background-color: #98E0FF;
+        color: black;
+        border: solid 1px black;
+        padding: 6px 12px;
+    }
+
+    .btn-save:hover {
+        background-color: lightgray;
+    }
+
+    .btn-back {
+        background-color: indianred;
+        color: black;
+        border: solid 1px black;
+        text-decoration: none; 
+        padding: 6px 12px; 
+        margin-left: 10px; 
+    }
+
+    .btn-back:hover {
+       background-color: lightgray;
+     }
+</style>
