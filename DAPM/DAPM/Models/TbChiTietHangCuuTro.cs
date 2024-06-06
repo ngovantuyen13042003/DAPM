@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DAPM.Models;
 
-namespace DAPM.Models;
 
 public partial class TbChiTietHangCuuTro
 {

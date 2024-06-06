@@ -1,7 +1,6 @@
-﻿@model IEnumerable<DAPM.Models.TbDotCuuTro>
-
+﻿@model IEnumerable<DAPM.Models.ViewModels.TbChiTietHangCuuTroViewModel>
 @{
-    ViewData["Title"] = "Quản lý đợt cứu trợ";
+    ViewData["Title"] = "Quản lý phân bổ hàng cứu trợ";
 }
 
 <div class="container-fluid">
@@ -42,8 +41,8 @@
                         <img src="~/Image/QLyCuuTro-removebg-preview.png" alt="" class="menu-icon">Quản lý đợt cứu trợ
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="qlCuuTroDropdown">
-                        <li><a class="dropdown-item active" href="#">Danh sách đợt cứu trợ</a></li>
-                        <li><a class="dropdown-item" href="@Url.Action("Index", "tbChiTietHangCuuTroes")">Phân bổ cứu trợ</a></li>
+                        <li><a class="dropdown-item" href="@Url.Action("Index", "tbDotCuuTroes")">Danh sách đợt cứu trợ</a></li>
+                        <li><a class="dropdown-item active" href="#">Phân bổ cứu trợ</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -62,7 +61,7 @@
         <div class="col-md-10 main-content">
             <div class="row header align-items-center">
                 <div class="col-md-4">
-                    <h3>Quản lý đợt cứu trợ</h3>
+                    <h3>Quản lý phân bổ hàng cứu trợ</h3>
                 </div>
                 <div class="col-md-4">
                     <input type="text" class="form-control" placeholder="Search">
@@ -74,7 +73,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2>DANH SÁCH ĐỢT CỨU TRỢ</h2>
+                <h2>CHI TIẾT PHÂN BỔ HÀNG CỨU TRỢ</h2>
                 <a href="@Url.Action("Create")" class="btn btn-primary">Thêm</a>
             </div>
             <div class="table-responsive">
@@ -82,34 +81,38 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Đợt lũ</th>
+                            <th>Tên đợt lũ</th>
                             <th>Tên đợt cứu trợ</th>
-                            <th>Ngày bắt đầu</th>
-                            <th>Ngày kết thúc</th>
-                            <th>Thao tác</th>
+                            <th>Mức thiệt hại</th>
+                            <th>Tài khoản</th>
+                            <th>Hàng hóa cứu trợ</th>
+                            <th>Số lượng</th>
                         </tr>
                     </thead>
                     <tbody>
                         @{
-                            int stt = 1;
+                            int stt = 1; // Khởi tạo biến số thứ tự
                         }
                         @foreach (var item in Model)
                         {
-                            <tr data-href="@Url.Action("Details", new { id = item.IdDotCuuTro })" class="clickable-row">
+                            <tr data-href="@Url.Action("Details", new { idTaiKhoan=item.IdTaiKhoan,idDotCuuTro= item.IdDotCuuTro, idHangHoa=item.IdHangHoa})" class="clickable-row">
                                 <td>@stt</td>
-                                <td>@Html.DisplayFor(modelItem => item.IdDotLuNavigation.TenDotLu)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TenDotLu)</td>
                                 <td>@Html.DisplayFor(modelItem => item.TenDotCuuTro)</td>
-                                <td>@Html.DisplayFor(modelItem => item.NgayBatDau)</td>
-                                <td>@Html.DisplayFor(modelItem => item.NgayKetThuc)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TenMucDoThietHai)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TenTaiKhoan)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TenHangHoa)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
                                 <td>
-                                    <a href="@Url.Action("Edit", new { id = item.IdDotCuuTro })"><img src="~/Image/edit_icon.jpg" alt="Edit"></a> |
-                                    <a href="@Url.Action("Delete", new { id = item.IdDotCuuTro })"><img src="~/Image/delete_icon.jpg" alt="Delete"></a>
+                                    <a href="@Url.Action("Edit", new { idTaiKhoan = item.IdTaiKhoan, idDotCuuTro = item.IdDotCuuTro, idHangHoa = item.IdHangHoa })"><img src="~/Image/edit_icon.jpg" alt="Edit"></a>| 
+                                    <a href="@Url.Action("Delete", new { idTaiKhoan=item.IdTaiKhoan,idDotCuuTro= item.IdDotCuuTro, idHangHoa=item.IdHangHoa })"><img src="~/Image/delete_icon.jpg" alt="Delete"></a>
                                 </td>
                             </tr>
-                            stt++;
+                            stt++; // Tăng số thứ tự sau mỗi dòng
                         }
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>
@@ -173,14 +176,15 @@
         text-align: left;
     }
 
-    .nav-link:hover {
-        background-color: lightgray;
-    }
-    .nav-link.active {
-        font-weight: bold;
-        color: black;
-        background-color: #d1ecf1;
-    }
+        .nav-link:hover {
+            background-color: lightgray;
+        }
+
+        .nav-link.active {
+            font-weight: bold;
+            color: black;
+            background-color: #d1ecf1;
+        }
 
     .dropdown-item.active {
         font-weight: bold;
@@ -227,10 +231,10 @@
         transition: background-color 0.3s;
     }
 
-    .btn-primary:hover {
-        background-color: #007bff;
-        color: white;
-    }
+        .btn-primary:hover {
+            background-color: #007bff;
+            color: white;
+        }
 
     .table-centered {
         margin: 0 auto;
@@ -247,11 +251,11 @@
         width: 100%;
     }
 
-    table.table th, table.table td {
-        text-align: center;
-        vertical-align: middle;
-        height: 30px;
-    }
+        table.table th, table.table td {
+            text-align: center;
+            vertical-align: middle;
+            height: 30px;
+        }
 
     .clickable-row {
         cursor: pointer;
@@ -261,13 +265,13 @@
         border-bottom: 1px solid #dee2e6;
     }
 
-    .table-centered tbody tr:nth-child(odd) {
-        background-color: #f8f9fa;
-    }
+        .table-centered tbody tr:nth-child(odd) {
+            background-color: #f8f9fa;
+        }
 
-    .table-centered tbody tr:nth-child(even) {
-        background-color: #ffffff;
-    }
+        .table-centered tbody tr:nth-child(even) {
+            background-color: #ffffff;
+        }
 
     .dropdown-menu {
         display: none;
@@ -285,9 +289,9 @@
         transition: background-color 0.3s;
     }
 
-    .dropdown-item:hover {
-        background-color: lightgray;
-    }
+        .dropdown-item:hover {
+            background-color: lightgray;
+        }
 
     .dropdown-toggle::after {
         content: "";
@@ -307,9 +311,9 @@
         display: none;
     }
 
-    .dropdown-submenu.show {
-        display: block;
-    }
+        .dropdown-submenu.show {
+            display: block;
+        }
 
     .row {
         display: flex;
@@ -324,9 +328,9 @@
         align-items: center;
     }
 
-    .header h3 {
-        margin: 0;
-     }
+        .header h3 {
+            margin: 0;
+        }
 
     .form-control {
         width: 100%;
@@ -359,7 +363,7 @@
 </style>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        
+
         var dropdowns = document.querySelectorAll('.dropdown-toggle');
         dropdowns.forEach(function (dropdown) {
             dropdown.addEventListener('click', function (event) {
@@ -371,7 +375,7 @@
             });
         });
 
-        
+
         var rows = document.querySelectorAll(".clickable-row");
         rows.forEach(function (row) {
             row.addEventListener("click", function () {
@@ -379,7 +383,7 @@
             });
         });
 
-        
+
         var currentUrl = window.location.href;
         if (currentUrl.includes("/tbDotCuus")) {
             document.getElementById("qlCuuTroDropdown").classList.add("active");
