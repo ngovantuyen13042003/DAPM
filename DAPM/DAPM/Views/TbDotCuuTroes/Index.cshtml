@@ -3,81 +3,81 @@
 @{
     ViewData["Title"] = "Quản lý đợt cứu trợ";
 }
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid_ct">
+    <div class="row_ct">
         <!-- Sidebar -->
-        <div class="col-md-2 sidebar">
-            <div class="sidebar-header">
-                <h3> <img src="~/Image/logoHuyen.jpg" alt="" class="logo">HUYỆN HÒA VANG</h3>
+        <div class="col-md-2 sidebar_ct">
+            <div class="sidebar-header_ct">
+                <h3> <img src="~/Image/logoHuyen.jpg" alt="" class="logo_ct">HUYỆN HÒA VANG</h3>
             </div>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <img src="~/Image/TongQuan-removebg-preview.png" alt="" class="menu-icon">Tổng quan
+            <ul class="nav flex-column_ct">
+                <li class="nav-item_ct">
+                    <a class="nav-link_ct" href="#">
+                        <img src="~/Image/TongQuan-removebg-preview.png" alt="" class="menu-icon_ct">Tổng quan
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <img src="~/Image/DMHangHoa-removebg-preview.png" alt="" class="menu-icon">Danh mục hàng hóa
+                <li class="nav-item_ct">
+                    <a class="nav-link_ct" href="#">
+                        <img src="~/Image/DMHangHoa-removebg-preview.png" alt="" class="menu-icon_ct">Danh mục hàng hóa
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "tbDotLus")">
-                        <img src="~/Image/QlyDotLu-removebg-preview.png" alt="" class="menu-icon">Quản lý đợt lũ
+                <li class="nav-item_ct">
+                    <a class="nav-link_ct" href="#">
+                        <img src="~/Image/QlyDotLu-removebg-preview.png" alt="" class="menu-icon_ct">Quản lý đợt lũ
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <img src="~/Image/QLyThietHai-removebg-preview.png" alt="" class="menu-icon">Quản lý thiệt hại
+                <li class="nav-item_ct">
+                    <a class="nav-link_ct" href="#">
+                        <img src="~/Image/QLyThietHai-removebg-preview.png" alt="" class="menu-icon_ct">Quản lý thiệt hại
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <img src="~/Image/QLyUngHo-removebg-preview.png" alt="" class="menu-icon">Quản lý ủng hộ
+                <li class="nav-item_ct">
+                    <a class="nav-link_ct" href="#">
+                        <img src="~/Image/QLyUngHo-removebg-preview.png" alt="" class="menu-icon_ct">Quản lý ủng hộ
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="qlCuuTroDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="~/Image/QLyCuuTro-removebg-preview.png" alt="" class="menu-icon">Quản lý đợt cứu trợ
+                <li class="nav-item dropdown_ct">
+                    <a class="nav-link_ct dropdown-toggle_ct" href="#" id="qlCuuTroDropdown_ct" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="~/Image/QLyCuuTro-removebg-preview.png" alt="" class="menu-icon_ct">Quản lý đợt cứu trợ
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="qlCuuTroDropdown">
-                        <li><a class="dropdown-item active" href="#">Danh sách đợt cứu trợ</a></li>
-                        <li><a class="dropdown-item" href="@Url.Action("Index", "tbChiTietHangCuuTroes")">Phân bổ cứu trợ</a></li>
+                    <ul class="dropdown-menu_ct" aria-labelledby="qlCuuTroDropdown_ct">
+                        <li><a class="dropdown-item_ct active_ct" href="#">Danh sách đợt cứu trợ</a></li>
+                        <li><a class="dropdown-item_ct" href="@Url.Action("Index", "tbChiTietHangCuuTroes")">Phân bổ cứu trợ</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <img src="~/Image/QlyTaiKhoan-removebg-preview.png" alt="" class="menu-icon">Quản lý tài khoản
+                <li class="nav-item_ct">
+                    <a class="nav-link_ct" href="#">
+                        <img src="~/Image/QlyTaiKhoan-removebg-preview.png" alt="" class="menu-icon_ct">Quản lý tài khoản
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <img src="~/Image/TKe-removebg-preview.png" alt="" class="menu-icon">Thống kê & báo cáo
+                <li class="nav-item_ct">
+                    <a class="nav-link_ct" href="#">
+                        <img src="~/Image/TKe-removebg-preview.png" alt="" class="menu-icon_ct">Thống kê & báo cáo
                     </a>
                 </li>
             </ul>
         </div>
         <!-- Main content -->
-        <div class="col-md-10 main-content">
-            <div class="row header align-items-center">
-                <div class="col-md-4">
-                    <h3>Quản lý đợt cứu trợ</h3>
+        <div class="col-md-10 main-content_ct">
+            <div class="row_ct header_ct align-items-center_ct">
+                <div class="col-md-4_ct">
+                    <h3 style="font-size:15px; text-align:center">Quản lý đợt cứu trợ</h3>
                 </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Search">
+                <div class="col-md-4_ct">
+                    <input type="text" class="form-control_ct" placeholder="Search">
                 </div>
-                <div class="col-md-4 d-flex justify-content-end align-items-center">
-                    <span class="admin-text"><img src="~/Image/admin-icon.jpg" alt="" class="admin-icon"> Admin</span>
-                    <img src="~/Image/notification_icon.jpg" alt="Notifications" class="notification-icon">
-                    <img src="~/Image/settings_icon.jpg" alt="Settings" class="settings-icon">
+                <div class="col-md-4_ct d-flex justify-content-end_ct align-items-center_ct">
+                    <span class="admin-text_ct"><img src="~/Image/admin-icon.jpg" alt="" class="admin-icon_ct"> Admin</span>
+                    <img src="~/Image/notification_icon.jpg" alt="Notifications" class="notification-icon_ct">
+                    <img src="~/Image/settings_icon.jpg" alt="Settings" class="settings-icon_ct">
                 </div>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2>DANH SÁCH ĐỢT CỨU TRỢ</h2>
-                <a href="@Url.Action("Create")" class="btn btn-primary">Thêm</a>
+            <div class="justify-content-between_ct align-items-center_ct mb-3">
+                <h2 class="h2_ct">DANH SÁCH ĐỢT CỨU TRỢ</h2>
+                <a href="@Url.Action("Create")" class="btn btn-primary_ct">Thêm</a>
             </div>
-            <div class="table-responsive">
-                <table class="table table-striped table-centered">
+            <div class="table-responsive_ct">
+                <table class="table table-striped table-centered_ct table_ct">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -115,52 +115,52 @@
 </div>
 
 <style>
-    h2 {
-        text-align: center;
-    }
-
     h3 {
-        font-size: 20px;
+        font-size: 14px;
         color: #0057BE;
     }
 
-    .container-fluid {
+    .container-fluid_ct {
         padding: 0;
     }
 
-    .row {
+    .row_ct {
         display: flex;
     }
 
-    .sidebar {
+    .sidebar_ct {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
         background-color: white;
         padding: 10px;
-        height: 100vh;
         width: 20%;
     }
 
-    .sidebar-header {
+    .sidebar-header_ct {
         text-align: left;
         padding: 3px 0;
         font-size: 1.25rem;
         font-weight: bold;
     }
 
-    .nav {
+    .nav_ct {
         padding-left: 0;
         list-style: none;
     }
 
-    .main-content {
+    .main-content_ct {
         padding: 20px;
         width: 80%;
+        margin-left: 20%; /* Đảm bảo nội dung chính không bị che bởi menu */
     }
 
-    .nav-item {
+    .nav-item_ct {
         margin-bottom: 5px;
     }
 
-    .nav-link {
+    .nav-link_ct {
         display: flex;
         align-items: center;
         padding: 10px;
@@ -172,22 +172,23 @@
         text-align: left;
     }
 
-    .nav-link:hover {
-        background-color: lightgray;
-    }
-    .nav-link.active {
+        .nav-link_ct:hover {
+            background-color: lightgray;
+        }
+
+        .nav-link_ct.active_ct {
+            font-weight: bold;
+            color: black;
+            background-color: #d1ecf1;
+        }
+
+    .dropdown-item_ct.active_ct {
         font-weight: bold;
         color: black;
         background-color: #d1ecf1;
     }
 
-    .dropdown-item.active {
-        font-weight: bold;
-        color: black;
-        background-color: #d1ecf1;
-    }
-
-    .menu-icon {
+    .menu-icon_ct {
         margin-right: 10px;
         height: 20px;
         width: 20px;
@@ -202,17 +203,15 @@
         width: 15px;
     }
 
-    .logo {
+    .logo_ct {
         margin-right: 10px;
         height: 40px;
         width: 40px;
     }
 
-    .btn-primary {
+    .btn-primary_ct {
         background-color: #98E0FF;
         color: black;
-        margin-left: 82%;
-        margin-bottom: 20px;
         border: solid 1px black;
         width: 80px;
         height: 30px;
@@ -224,58 +223,60 @@
         font-size: 14px;
         text-align: center;
         transition: background-color 0.3s;
+        margin-left: 80%;
     }
 
-    .btn-primary:hover {
-        background-color: #007bff;
-        color: white;
-    }
+        .btn-primary_ct:hover {
+            background-color: #007bff;
+            color: white;
+        }
 
-    .table-centered {
+    .table-centered_ct {
         margin: 0 auto;
         text-align: center;
         width: 90%;
     }
 
-    .table-responsive {
-        display: flex;
-        justify-content: center;
+    .table-responsive_ct {
+        min-height: calc(100vh - 40px); /* 40px là tổng chiều cao của header và footer */
     }
 
-    table.table {
+    table.table_ct {
         width: 100%;
     }
 
-    table.table th, table.table td {
-        text-align: center;
-        vertical-align: middle;
-        height: 30px;
-    }
+        table.table_ct th,
+        table.table_ct td {
+            text-align: center;
+            vertical-align: middle;
+            height: 30px;
+            font-size: 12px; /* Decrease table text size */
+        }
 
-    .clickable-row {
+    .clickable-row_ct {
         cursor: pointer;
     }
 
-    .table-centered tbody tr {
+    .table-centered_ct tbody tr {
         border-bottom: 1px solid #dee2e6;
     }
 
-    .table-centered tbody tr:nth-child(odd) {
-        background-color: #f8f9fa;
-    }
+        .table-centered_ct tbody tr:nth-child(odd) {
+            background-color: #f8f9fa;
+        }
 
-    .table-centered tbody tr:nth-child(even) {
-        background-color: #ffffff;
-    }
+        .table-centered_ct tbody tr:nth-child(even) {
+            background-color: #ffffff;
+        }
 
-    .dropdown-menu {
+    .dropdown-menu_ct {
         display: none;
         padding: 0;
         margin: 0;
         list-style: none;
     }
 
-    .dropdown-item {
+    .dropdown-item_ct {
         padding: 10px 20px;
         background-color: white;
         color: #333;
@@ -284,11 +285,11 @@
         transition: background-color 0.3s;
     }
 
-    .dropdown-item:hover {
-        background-color: lightgray;
-    }
+        .dropdown-item_ct:hover {
+            background-color: lightgray;
+        }
 
-    .dropdown-toggle::after {
+    .dropdown-toggle_ct::after {
         content: "";
         border-top: .3em solid;
         border-right: .3em solid transparent;
@@ -298,23 +299,19 @@
         display: inline-block;
     }
 
-    .dropdown-menu.show {
+    .dropdown-menu_ct.show_ct {
         display: block;
     }
 
-    .dropdown-submenu {
+    .dropdown-submenu_ct {
         display: none;
     }
 
-    .dropdown-submenu.show {
-        display: block;
-    }
+        .dropdown-submenu_ct.show_ct {
+            display: block;
+        }
 
-    .row {
-        display: flex;
-    }
-
-    .header {
+    .header_ct {
         background-color: white;
         padding: 10px 20px;
         border-bottom: 1px solid #dee2e6;
@@ -323,72 +320,77 @@
         align-items: center;
     }
 
-    .header h3 {
-        margin: 0;
-     }
-
-    .form-control {
+    .form-control_ct {
         width: 100%;
         margin-left: 50px;
     }
 
-    .admin-icon {
+    .admin-icon_ct {
         margin-right: 15px;
     }
 
-    .notification-icon, .settings-icon {
+    .notification-icon_ct,
+    .settings-icon_ct {
         width: 24px;
         height: 24px;
         margin-left: 15px;
         cursor: pointer;
     }
 
-    .col-md-4 {
+    .col-md-4_ct {
         margin-left: 30px;
     }
 
-    .admin-icon {
+    .admin-icon_ct {
         height: 30px;
         width: 30px;
     }
 
-    .admin-text {
+    .admin-text_ct {
         font-weight: bold;
+    }
+
+    .h2_ct {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .justify-content-between_ct {
+        display: inline-block;
+        width: 100%;
     }
 </style>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        
-        var dropdowns = document.querySelectorAll('.dropdown-toggle');
-        dropdowns.forEach(function (dropdown) {
-            dropdown.addEventListener('click', function (event) {
+        var dropdowns_ct = document.querySelectorAll('.dropdown-toggle_ct');
+        dropdowns_ct.forEach(function (dropdown_ct) {
+            dropdown_ct.addEventListener('click', function (event) {
                 event.preventDefault();
-                var nextEl = dropdown.nextElementSibling;
-                if (nextEl && nextEl.classList.contains('dropdown-menu')) {
-                    nextEl.classList.toggle('show');
+                var nextEl_ct = dropdown_ct.nextElementSibling;
+                if (nextEl_ct && nextEl_ct.classList.contains('dropdown-menu_ct')) {
+                    nextEl_ct.classList.toggle('show_ct');
                 }
             });
         });
 
-        
-        var rows = document.querySelectorAll(".clickable-row");
-        rows.forEach(function (row) {
-            row.addEventListener("click", function () {
+        var rows_ct = document.querySelectorAll(".clickable-row_ct");
+        rows_ct.forEach(function (row_ct) {
+            row_ct.addEventListener("click", function () {
                 window.location = this.dataset.href;
             });
         });
 
-        
-        var currentUrl = window.location.href;
-        if (currentUrl.includes("/tbDotCuus")) {
-            document.getElementById("qlCuuTroDropdown").classList.add("active");
-            var dropdownMenu = document.getElementById("qlCuuTroDropdown").nextElementSibling;
-            if (dropdownMenu) {
-                dropdownMenu.classList.add("show");
-                var dropdownItems = dropdownMenu.querySelectorAll(".dropdown-item");
-                dropdownItems.forEach(function (item) {
-                    if (item.href === currentUrl) {
-                        item.classList.add("active");
+        var currentUrl_ct = window.location.href;
+        if (currentUrl_ct.includes("/tbDotCuus")) {
+            document.getElementById("qlCuuTroDropdown_ct").classList.add("active_ct");
+            var dropdownMenu_ct = document.getElementById("qlCuuTroDropdown_ct").nextElementSibling;
+            if (dropdownMenu_ct) {
+                dropdownMenu_ct.classList.add("show_ct");
+                var dropdownItems_ct = dropdownMenu_ct.querySelectorAll(".dropdown-item_ct");
+                dropdownItems_ct.forEach(function (item_ct) {
+                    if (item_ct.href === currentUrl_ct) {
+                        item_ct.classList.add("active_ct");
                     }
                 });
             }
