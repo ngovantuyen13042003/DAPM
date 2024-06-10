@@ -13,11 +13,11 @@
 
 /* Adjust the sidebar and dropdown menu for proper alignment and functionality */
 .sidebar {
-	width: 17%; /* Adjusted width */
+	width: 20%;
 	background-color: #f4f4f4;
 	padding: 20px;
 	box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-	overflow: hidden; /* Ensures nothing overflows out of the sidebar */
+	overflow: hidden;
 }
 
 .logo {
@@ -27,25 +27,26 @@
 }
 
 	.logo img {
-		margin-right: 10px; /* Space between logo and text */
+		margin-right: 10px;
 	}
 
 	.logo span {
-		font-size: 16px; /* Increased font size */
-		font-weight: bold; /* Make text bold */
+		font-size: 16px;
+		font-weight: bold;
 	}
 
 .menu {
 	list-style-type: none;
 	padding: 0;
-	margin: 0; /* Resets any default margin */
+	margin: 0;
 }
 
 	.menu li {
-		position: relative; /* Needed for absolute positioning of the dropdown */
+		position: relative;
 	}
 
 		.menu li a {
+			margin-left: 32px;
 			gap: 10px;
 			display: flex;
 			align-items: center;
@@ -53,44 +54,42 @@
 			text-decoration: none;
 			color: black;
 			font-weight: bold;
-			background-color: #f4f4f4; /* Ensures consistent background */
-			width: 100%; /* Ensures the link uses the full width of its container */
+			background-color: #f4f4f4;
+			width: 100%;
+			transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 		}
 
+			.menu li a img {
+				width: 20px;
+				height: 20px;
+			}
+
+			.menu li a.active,
+			.menu li a:hover {
+				background-color: #007bff;
+				color: white;
+			}
+
 	.menu .dropdown a span i {
-		margin-left: 30px;
+		margin-left: auto; /* Moves the icon to the far right */
+		transition: transform 0.3s; /* Smooth transition for rotation */
 	}
-
-	.menu li a img {
-		width: 20px;
-		height: 20px;
-	}
-
-	.menu li a.active,
-	.menu li a:hover {
-		background-color: #007bff;
-		color: white;
-	}
-
-.dropdown:hover .dropdown-menu {
-	display: block;
-}
 
 .dropdown-menu {
 	list-style: none;
-	display: none;
+	display: none; /* Hide the dropdown menu by default */
+	background-color: #f4f4f4;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
 }
 
-	.dropdown-menu.active {
-		/* display: none;
-    position: absolute;     
-    top: 100%; 
-    left: 0;
-    right: 0; 
-    background-color: #f4f4f4;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1000; */
-		display: none;
+	.dropdown-menu.show {
+		display: block; /* Show the dropdown menu when active */
+	}
+
+	.dropdown-menu li {
+		margin-left: 32px;
 	}
 
 	.dropdown-menu a {
@@ -101,20 +100,16 @@
 		white-space: nowrap; /* Ensures text doesn't wrap */
 	}
 
-.dropdown a .angle.active {
-	transform: rotate(90deg)
+.dropdown a .angle {
+	transition: transform 0.3s; /* Smooth transition for rotation */
+}
+
+.dropdown a.active .angle {
+	transform: rotate(90deg);
 }
 
 
 
-/* .menu li:hover .dropdown-menu {
-    display: block; /* Shows the dropdown when parent is hovered */
-/* } */
-
-/* Ensuring no element is hidden under the dropdown */
-/* .menu li:not(:hover) .dropdown-menu {
-    display: none; /* Hides the dropdown when not hovering */
-/* } */
 
 
 

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAPM.Data;
 using DAPM.Models;
+using DAPM.ViewModels;
+using X.PagedList;
 
 namespace DAPM.Controllers
 {
@@ -20,10 +22,16 @@ namespace DAPM.Controllers
         }
 
         // GET: TbDotCuuTroes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            var dbLuLutHoaVangContext = _context.TbDotCuuTros.Include(t => t.IdDotLuNavigation);
-            return View(await dbLuLutHoaVangContext.ToListAsync());
+            int pageSize = 10;
+            int pageNumber = page ?? 1;
+
+            var lisCuuTro =  _context.TbDotCuuTros.Include(t => t.IdDotLuNavigation);
+
+            PagedList<TbDotCuuTro> pagination = new PagedList<TbDotCuuTro>(lisCuuTro, pageNumber, pageSize);
+
+            return View(pagination);
         }
 
         // GET: TbDotCuuTroes/Details/5

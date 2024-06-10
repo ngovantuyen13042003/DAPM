@@ -12,8 +12,8 @@
         <h2>Quản lý danh mục</h2>
     </div>
     <div class="search-bar">
-        <input type="text" placeholder="Search">
-        <img src="/img/search.png" alt="Search" style="width: 15px;">
+        <input type="text" id="searchTerm" placeholder="Search" onkeydown="handleSearch(event)">
+        <i class="fa fa-search" onclick="search()"></i>
     </div>
     <div class="user-info">
         <div class="user-section">
@@ -84,3 +84,17 @@
         }
     </ul>
 </div>
+<script>
+    function search() {
+        var searchTerm = document.getElementById("searchTerm").value;
+
+        // Redirect to the Index action of your controller with the search term as a query parameter
+        window.location.href = '@Url.Action("Index", "DanhMucs")' + '?searchTerm=' + searchTerm;
+    }
+
+    function handleSearch(event) {
+        if (event.key === 'Enter') {
+            search();
+        }
+    }
+</script>

@@ -19,35 +19,59 @@
             <ul class="menu">
                 <li><a href="#"><img src="/img/home.png" alt="Home"> Tổng quan</a></li>
                 <li><a href="@Url.Action("Index", "TaiKhoans")"><img src="/img/taikhoan.png" alt="Account"> Quản lý tài khoản</a></li>
-                <li><a href="#"><img src="/img/dotlu.png" alt="Flood"> Quản lý đợt lũ</a></li>
+                <li><a href="@Url.Action("Index","DOTLU")"><img src="/img/dotlu.png" alt="Flood"> Quản lý đợt lũ</a></li>
                 <li><a href="@Url.Action("Index", "DanhMucs")"><img src="/img/danhmuc.png" alt="Category"> Danh mục hàng hóa</a></li>
+                <li><a href="@Url.Action("Index","UngHo")"><img src="/img/ungho.png" alt="Support"> Quản lý ủng hộ</a></li>
+
                 <li class="dropdown">
-                    <a href="#">
+                    <a href="javascript:void(0);" class="dropdown-toggle">
                         <img src="/img/thiethai.png" alt="Damage">
                         <span>Quản lý thiệt hại</span>
                         <span><i class="fa-solid fa-angle-down angle"></i></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Danh mục thiệt hại</a></li>
-                        <li><a href="#">Chi tiết thiệt hại</a></li>
+                        <li><a href="@Url.Action("Index","DanhMucThietHai")">Danh mục thiệt hại</a></li>
+                        <li><a href="@Url.Action("Index","CAPNHATTHIETHAI")">Chi tiết thiệt hại</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><img src="/img/ungho.png" alt="Support"> Quản lý ủng hộ</a></li>
+
                 <li class="dropdown">
-                    <a href="#">
+                    <a href="javascript:void(0);" class="dropdown-toggle">
                         <img src="/img/cuutro.png" alt="Rescue">
                         <span>Quản lý cứu trợ</span>
                         <span><i class="fa-solid fa-angle-down angle"></i></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Danh sách đợt cứu trợ</a></li>
-                        <li><a href="#">Phân bổ cứu trợ</a></li>
+                        <li><a href="@Url.Action("Index", "tbDotCuuTroes")">Danh sách đợt cứu trợ</a></li>
+                        <li><a href="@Url.Action("Index","TbChiTietHangCuuTroes")">Phân bổ cứu trợ</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><img src="/img/thongke.png" alt="Report"> Thống kê & báo cáo</a></li>
             </ul>
-
         </div>
+
+        <script>
+            document.querySelectorAll('.dropdown-toggle').forEach(function (dropdownToggle) {
+                dropdownToggle.addEventListener('click', function () {
+                    var submenu = this.nextElementSibling;
+                    var angleIcon = this.querySelector('.angle');
+                    if (submenu.classList.contains('show')) {
+                        submenu.classList.remove('show');
+                        angleIcon.classList.remove('active');
+                    } else {
+                        document.querySelectorAll('.dropdown-menu').forEach(function (dropdown) {
+                            dropdown.classList.remove('show');
+                        });
+                        document.querySelectorAll('.angle').forEach(function (icon) {
+                            icon.classList.remove('active');
+                        });
+                        submenu.classList.add('show');
+                        angleIcon.classList.add('active');
+                    }
+                });
+            });
+        </script>
+
         <div class="content">
             @RenderBody()
         </div>

@@ -6,21 +6,29 @@ using Microsoft.EntityFrameworkCore;
 using DAPM.Data;
 using DAPM.Models;
 using DAPM.Models.ViewModels;
+using X.PagedList;
+using DAPM.Services;
 
 namespace DAPM.Controllers
 {
     public class TbChiTietHangCuuTroesController : Controller
     {
         private readonly Data.DbLuLutHoaVangContext _context;
+        private readonly CuuTroService cuuTroService;
 
-        public TbChiTietHangCuuTroesController(Data.DbLuLutHoaVangContext context)
+        public TbChiTietHangCuuTroesController(Data.DbLuLutHoaVangContext context, CuuTroService cuuTroService)
         {
             _context = context;
+            this.cuuTroService = cuuTroService;
         }
 
         // GET: TbChiTietHangCuuTroes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
+            int pageSize = 10;
+            int pageNumber = page ?? 1;
+
+
             var result = from cthct in _context.TbChiTietHangCuuTros
                          join hh in _context.TbHangHoas on cthct.IdHangHoa equals hh.IdHangHoa
                          join dct in _context.TbDotCuuTros on cthct.IdDotCuuTro equals dct.IdDotCuuTro
@@ -41,7 +49,10 @@ namespace DAPM.Controllers
                          };
 
             var resultList = await result.ToListAsync();
-            return View(resultList);
+            PagedList<TbChiTietHangCuuTroViewModel> pagination = new PagedList<TbChiTietHangCuuTroViewModel>(resultList, pageNumber, pageSize);
+
+
+            return View(pagination);
         }
 
         // GET: TbChiTietHangCuuTroes/Details/5
@@ -77,19 +88,50 @@ namespace DAPM.Controllers
         }
 
 
+
+
         // GET: TbChiTietHangCuuTroes/Create
-        public IActionResult Create()
+        public IActionResult Create(long? dl_filter, long? mth_filter, long? dm_filter, long? dmf,  long? mthf)
         {
-            ViewData["IdDotCuuTro"] = new SelectList(_context.TbDotCuuTros, "IdDotCuuTro", "TenDotCuuTro");
-            ViewData["IdHangHoa"] = new SelectList(_context.TbHangHoas, "IdHangHoa", "TenHangHoa");
-            ViewData["IdTaiKhoan"] = new SelectList(_context.TbTaiKhoans, "IdTaiKhoan", "HoVaTen");
-            return View();
+            var dl = _context.TbDotLus.ToList();
+            var dm = cuuTroService.getAllDanhMuc();
+            ViewBag.dm = dmf;
+            var mth = cuuTroService.getAllMucThietHai();
+            ViewBag.mth = mthf;
+
+            List<TbDotCuuTro> dct = null;
+            List<TbTaiKhoan> tk = null;
+            List<TbHangHoa> hh = null;
+
+            if (dl_filter != null)
+            {
+                dct = cuuTroService.filterDotCuuTro(dl_filter);
+                ViewBag.dl_filter = dl_filter;
+            }
+
+            if (mth_filter != null)
+            {
+                tk = cuuTroService.filterTaiKhoan(mth_filter);
+                ViewBag.mth_filter = mth_filter;
+            }
+
+            if (dm_filter != null)
+            {
+                hh = cuuTroService.filterHangHoa(dm_filter);
+                ViewBag.dm_filter = dm_filter;
+            }
+
+            var data = new Tuple<List<TbDotLu>, List<TbDanhMuc>, List<TbMucDoThietHai>, List<TbDotCuuTro>, List<TbTaiKhoan>, List<TbHangHoa>>(dl, dm, mth, dct, tk, hh);
+
+            return View(data);
         }
+
+
 
         // POST: TbChiTietHangCuuTroes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdHangHoa,IdTaiKhoan,IdDotCuuTro,SoLuong")] TbChiTietHangCuuTro tbChiTietHangCuuTro)
+        public async Task<IActionResult> Create([Bind("IdHangHoa,IdDotCuuTro,SoLuong")] TbChiTietHangCuuTro tbChiTietHangCuuTro)
         {
             if (ModelState.IsValid)
             {

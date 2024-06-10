@@ -1,0 +1,111 @@
+﻿/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+}
+
+    .container h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #007bff;
+    }
+
+.dropdowns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .dropdowns label {
+        font-weight: bold;
+        width: 30%;
+        margin-right: 10px; /* Thêm margin để tạo khoảng cách giữa label và select */
+    }
+
+    .dropdowns select {
+        width: calc(70% - 10px); /* Điều chỉnh kích thước của select */
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    table th, table td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+.distribution {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .distribution label {
+        font-weight: bold;
+        width: 30%;
+        margin-right: 10px; /* Thêm margin để tạo khoảng cách giữa label và input */
+    }
+
+    .distribution select,
+    .distribution input[type="number"] {
+        width: calc(70% - 10px); /* Điều chỉnh kích thước của select và input */
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+    .buttons button {
+        padding: 10px 20px;
+        margin: 0 5px;
+        font-size: 16px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+#save {
+    background-color: #98E0FF;
+}
+
+#close {
+    background-color: #DD4242;
+}
+
+.buttons button:hover {
+    opacity: 0.8;
+}
+

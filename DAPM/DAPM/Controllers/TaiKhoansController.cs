@@ -24,7 +24,7 @@ namespace DAPM.Controllers
         
         public IActionResult Index(int? page, string? searchString)
         {
-            int pageSize = 10;
+            int pageSize = 7;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
             var lsttaikhoan = _context.TbTaiKhoans.AsNoTracking().OrderBy(x => x.IdTaiKhoan);
             

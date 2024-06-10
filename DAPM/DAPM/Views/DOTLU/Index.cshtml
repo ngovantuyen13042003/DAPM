@@ -4,8 +4,8 @@
     Layout = null;
     ViewData["Title"] = "Quản lý đợt lũ";
     int counter = 1;
-    var currentPage = ViewBag.CurrentPage ?? 1; // Default to page 1 if not set
-    var totalPages = ViewBag.TotalPages ?? 1; // Default to 1 if not set
+    var currentPage = ViewBag.CurrentPage ?? 1; 
+    var totalPages = ViewBag.TotalPages ?? 1; 
 }
 <style>
     .pagination {
@@ -66,34 +66,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
-            <div class="logo">
-                <img src="/img/logo.png" alt="Logo" style="width: 80px;">
-                <img src="~/img//HUYỆN HÒA VANG.png" alt="Tenlogo"/>
-                <!--<span>HUYỆN HOA VÀNG</span>-->
-            </div>
-            <ul class="menu">
-                <li><a href="#"><img src="~/img/home.png" alt="Home"> Tổng quan</a></li>
-                <li><a href="#"><img src="~/img/taikhoan.png" alt="Account"> Quản lý tài khoản</a></li>
-                <li><a href="#" class="active"><img src="~/img/dotlu.png" alt="Flood"> Quản lý đợt lũ</a></li>
-                <li><a href="#"><img src="~/img/danhmuc.png" alt="Category"> Danh mục hàng hóa</a></li>
-                <li><a href="#"><img src="~/img/ungho.png" alt="Support"> Quản lý ủng hộ</a></li>
-                <li class="dropdown">
-                    <a href="#">
-                        <img src="/img/thiethai.png" alt="Damage">
-                        <span>Quản lý thiệt hại</span>
-                        <span><i class="fa-solid fa-angle-left"></i></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Danh mục thiệt hại</a></li>
-                        <li><a href="@Url.Action("Index","CAPNHATTHIETHAI")">Chi tiết thiệt hại</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><img src="~/img/cuutro.png" alt="Rescue"> Quản lý cứu trợ</a></li>
-                <li><a href="#"><img src="~/img/thongke.png" alt="Report"> Thống kê & báo cáo</a></li>
-            </ul>
+        <!--side bar-->
+        @Html.Partial("menu")
 
-        </div>
+
         <div class="content">
             <div class="header">
                 <div class="header-title">
@@ -172,24 +148,6 @@
 </body>
 </html>
 
-<script>
-    const dropDown = document.querySelector(".dropdown a");
-    const dropDownMenu = document.querySelector(".dropdown .dropdown-menu");
-    const iconAngle = document.querySelector(".dropdown .fa-angle-left");
-
-    dropDownMenu.style.display = "none";
-
-    dropDown.addEventListener("click", (event) => {
-        event.preventDefault();
-        dropDownMenu.classList.toggle("active");
-        iconAngle.classList.toggle("active");
-        if (dropDownMenu.classList.contains("active")) {
-            dropDownMenu.style.display = "block";
-        } else {
-            dropDownMenu.style.display = "none";
-        }
-    });
-</script>
 <script>
     function search() {
         var searchTerm = document.getElementById("searchTerm").value;

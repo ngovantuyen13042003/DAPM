@@ -1,67 +1,18 @@
-﻿@model IEnumerable<DAPM.Models.TbDotCuuTro>
-
+﻿@model X.PagedList.IPagedList<DAPM.Models.TbDotCuuTro>
+﻿@using X.PagedList.Mvc.Core
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Quản lý đợt cứu trợ";
+    Layout = "~/Views/Shared/_nguyen.cshtml";
 }
 <div class="container-fluid_ct">
     <div class="row_ct">
-        <!-- Sidebar -->
-        <div class="col-md-2 sidebar_ct">
-            <div class="sidebar-header_ct">
-                <h3> <img src="~/Image/logoHuyen.jpg" alt="" class="logo_ct">HUYỆN HÒA VANG</h3>
-            </div>
-            <ul class="nav flex-column_ct">
-                <li class="nav-item_ct">
-                    <a class="nav-link_ct" href="#">
-                        <img src="~/Image/TongQuan-removebg-preview.png" alt="" class="menu-icon_ct">Tổng quan
-                    </a>
-                </li>
-                <li class="nav-item_ct">
-                    <a class="nav-link_ct" href="#">
-                        <img src="~/Image/DMHangHoa-removebg-preview.png" alt="" class="menu-icon_ct">Danh mục hàng hóa
-                    </a>
-                </li>
-                <li class="nav-item_ct">
-                    <a class="nav-link_ct" href="#">
-                        <img src="~/Image/QlyDotLu-removebg-preview.png" alt="" class="menu-icon_ct">Quản lý đợt lũ
-                    </a>
-                </li>
-                <li class="nav-item_ct">
-                    <a class="nav-link_ct" href="#">
-                        <img src="~/Image/QLyThietHai-removebg-preview.png" alt="" class="menu-icon_ct">Quản lý thiệt hại
-                    </a>
-                </li>
-                <li class="nav-item_ct">
-                    <a class="nav-link_ct" href="#">
-                        <img src="~/Image/QLyUngHo-removebg-preview.png" alt="" class="menu-icon_ct">Quản lý ủng hộ
-                    </a>
-                </li>
-                <li class="nav-item dropdown_ct">
-                    <a class="nav-link_ct dropdown-toggle_ct" href="#" id="qlCuuTroDropdown_ct" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="~/Image/QLyCuuTro-removebg-preview.png" alt="" class="menu-icon_ct">Quản lý đợt cứu trợ
-                    </a>
-                    <ul class="dropdown-menu_ct" aria-labelledby="qlCuuTroDropdown_ct">
-                        <li><a class="dropdown-item_ct active_ct" href="#">Danh sách đợt cứu trợ</a></li>
-                        <li><a class="dropdown-item_ct" href="@Url.Action("Index", "tbChiTietHangCuuTroes")">Phân bổ cứu trợ</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item_ct">
-                    <a class="nav-link_ct" href="#">
-                        <img src="~/Image/QlyTaiKhoan-removebg-preview.png" alt="" class="menu-icon_ct">Quản lý tài khoản
-                    </a>
-                </li>
-                <li class="nav-item_ct">
-                    <a class="nav-link_ct" href="#">
-                        <img src="~/Image/TKe-removebg-preview.png" alt="" class="menu-icon_ct">Thống kê & báo cáo
-                    </a>
-                </li>
-            </ul>
-        </div>
+       
         <!-- Main content -->
         <div class="col-md-10 main-content_ct">
             <div class="row_ct header_ct align-items-center_ct">
                 <div class="col-md-4_ct">
-                    <h3 style="font-size:15px; text-align:center">Quản lý đợt cứu trợ</h3>
+                    <h1 style="font-size:15px; text-align:center">Quản lý đợt cứu trợ</h1>
                 </div>
                 <div class="col-md-4_ct">
                     <input type="text" class="form-control_ct" placeholder="Search">
@@ -101,15 +52,56 @@
                                 <td>@Html.DisplayFor(modelItem => item.NgayBatDau)</td>
                                 <td>@Html.DisplayFor(modelItem => item.NgayKetThuc)</td>
                                 <td>
-                                    <a href="@Url.Action("Edit", new { id = item.IdDotCuuTro })"><img src="~/Image/edit_icon.jpg" alt="Edit"></a> |
-                                    <a href="@Url.Action("Delete", new { id = item.IdDotCuuTro })"><img src="~/Image/delete_icon.jpg" alt="Delete"></a>
+                                    <a href="@Url.Action("Edit", new { id = item.IdDotCuuTro })"><img style="width: 15px ; height: 15px" src="~/Image/edit_icon.jpg" alt="Edit"></a> |
+                                    <a href="@Url.Action("Delete", new { id = item.IdDotCuuTro })"><img style ="width: 15px ; height: 15px" src="~/Image/delete_icon.jpg" alt="Delete"></a>
                                 </td>
                             </tr>
                             stt++;
                         }
                     </tbody>
                 </table>
+                <div class="pagination" style="margin: 0">
+                    <div style="display: none" class="hint-text hidden">Showing <b>@Model.Count()</b> out of <b>@Model.PageSize</b> entries</div>
+                    <ul class="pagination">
+                        <li style="list-style-type: none; border: none; cursor: pointer;">
+                            <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;"
+                               href="@Url.Action("Index", "TbDotCuuTroes", new { page = Model.PageNumber - 1 })" class="page-link">&lt;</a>
+                        </li>
+                        @if (Model.PageCount <= 2)
+                        {
+                            for (int i = 1; i <= Model.PageCount; i++)
+                            {
+                                <li style="list-style-type: none; border: none; cursor: pointer;">
+                                    <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;"
+                                       href="@Url.Action("Index", "TbDotCuuTroes", new { page = i })" class="page-link">@i</a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li style="list-style-type: none; border: none; cursor: pointer;">
+                                <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;"
+                                   href="@Url.Action("Index", "TbDotCuuTroes", new { page = 1 })" class="page-link">1</a>
+                            </li>
+                            <li style="list-style-type: none; border: none; cursor: pointer;">
+                                <span style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;">...</span>
+                            </li>
+                            <li style="list-style-type: none; border: none; cursor: pointer;">
+                                <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;"
+                                   href="@Url.Action("Index", "TbDotCuuTroes", new { page = Model.PageCount })" class="page-link">@Model.PageCount</a>
+                            </li>
+                        }
+                        <li style="list-style-type: none; border: none; cursor: pointer;">
+                            <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;"
+                               href="@Url.Action("Index", "TbDotCuuTroes", new { page = Model.PageNumber + 1 })" class="page-link">&gt;</a>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
+
+            
+                
         </div>
     </div>
 </div>
@@ -121,92 +113,12 @@
     }
 
     .container-fluid_ct {
+        width: 100%;
         padding: 0;
     }
 
     .row_ct {
-        display: flex;
-    }
-
-    .sidebar_ct {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        background-color: white;
-        padding: 10px;
-        width: 20%;
-    }
-
-    .sidebar-header_ct {
-        text-align: left;
-        padding: 3px 0;
-        font-size: 1.25rem;
-        font-weight: bold;
-    }
-
-    .nav_ct {
-        padding-left: 0;
-        list-style: none;
-    }
-
-    .main-content_ct {
-        padding: 20px;
-        width: 80%;
-        margin-left: 20%; /* Đảm bảo nội dung chính không bị che bởi menu */
-    }
-
-    .nav-item_ct {
-        margin-bottom: 5px;
-    }
-
-    .nav-link_ct {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        background-color: white;
-        color: #333;
-        border-radius: 5px;
-        text-decoration: none;
-        transition: background-color 0.3s;
-        text-align: left;
-    }
-
-        .nav-link_ct:hover {
-            background-color: lightgray;
-        }
-
-        .nav-link_ct.active_ct {
-            font-weight: bold;
-            color: black;
-            background-color: #d1ecf1;
-        }
-
-    .dropdown-item_ct.active_ct {
-        font-weight: bold;
-        color: black;
-        background-color: #d1ecf1;
-    }
-
-    .menu-icon_ct {
-        margin-right: 10px;
-        height: 20px;
-        width: 20px;
-    }
-
-    a:hover img {
-        opacity: 0.7;
-    }
-
-    img {
-        height: 15px;
-        width: 15px;
-    }
-
-    .logo_ct {
-        margin-right: 10px;
-        height: 40px;
-        width: 40px;
+        width: 100%;
     }
 
     .btn-primary_ct {
@@ -223,7 +135,8 @@
         font-size: 14px;
         text-align: center;
         transition: background-color 0.3s;
-        margin-left: 80%;
+        margin-left: 85%;
+        margin-bottom: 15px;
     }
 
         .btn-primary_ct:hover {

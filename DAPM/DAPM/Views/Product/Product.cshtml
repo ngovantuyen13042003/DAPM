@@ -21,34 +21,15 @@
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <div class="logo">
-                <img src="@Url.Content("~/img/logo.jpeg")" alt="Logo">
-                <h1>HUYỆN HÒA VANG</h1>
-            </div>
-            <hr />
-            <nav>
-                <ul>
-                    <li><a href="#">Cập nhật tài khoản</a></li>
-                    <li><a href="#">Cập nhật Đợt lũ</a></li>
-                    <li><a href="#">Cập nhật Danh mục</a></li>
-                    <li><a href="#">Cập nhật ủng hộ</a></li>
-                    <li><a href="#">Cập nhật thiệt hại</a></li>
-                    <li><a href="#">Cập nhật cứu trợ</a></li>
 
-                    <ul>
-                        <li><a href="/UngHo/Index">Danh sách đơn đăng ký ủng hộ</a></li>
-                        <li><a href="#">Hàng hóa ủng hộ</a></li>
-                    </ul>
-              
-                    <li><a href="#">Thống kê & báo cáo</a></li>
-                </ul>
-            </nav>
-        </aside>
+        @Html.Partial("menu")
+
+
         <main class="main-content">
             <header>
                 <div class="search-bar">
-                    <input type="text" placeholder="Search">
+                    <input type="text" id="searchTerm" placeholder="Search" onkeydown="handleSearch(event)">
+                    <i class="fa fa-search" onclick="search()"></i>
                 </div>
                 <div class="user-info">
                     <i class="fa-regular fa-user" style="margin-right: 10px"></i>
@@ -102,17 +83,46 @@
 
                     </tbody>
                 </table>
+
                 <div class="pagination" style="margin: 0">
                     <div style="display: none" class="hint-text hidden">Showing <b>@Model.Count()</b> out of <b>@Model.PageSize</b> entries</div>
                     <ul class="pagination">
-                        @for (int i = 1; i <= Model.PageCount; i++)
+                        <li style="list-style-type: none; border: none; cursor: pointer;">
+                            <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;"
+                               href="@Url.Action("Product", "Product", new { page = Model.PageNumber - 1 })" class="page-link">&lt;</a>
+                        </li>
+                        @if (Model.PageCount <= 2)
                         {
-                            <li style=" list-style-type: none ; border: none; cursor: pointer;   ">
-                                <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc;  margin: 0 5px;" href="@Url.Action("Product", "Product", new { page = i})" class="page-link">@i</a>
+                            for (int i = 1; i <= Model.PageCount; i++)
+                            {
+                                <li style="list-style-type: none; border: none; cursor: pointer;">
+                                    <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;"
+                                       href="@Url.Action("Product", "Product", new { page = i })" class="page-link">@i</a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li style="list-style-type: none; border: none; cursor: pointer;">
+                                <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;"
+                                   href="@Url.Action("Product", "Product", new { page = 1 })" class="page-link">1</a>
+                            </li>
+                            <li style="list-style-type: none; border: none; cursor: pointer;">
+                                <span style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;">...</span>
+                            </li>
+                            <li style="list-style-type: none; border: none; cursor: pointer;">
+                                <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;"
+                                   href="@Url.Action("Product", "Product", new { page = Model.PageCount })" class="page-link">@Model.PageCount</a>
                             </li>
                         }
+                        <li style="list-style-type: none; border: none; cursor: pointer;">
+                            <a style="text-decoration: none; color: black; padding: 5px 10px; border-radius: 5px; background-color: #ccc; margin: 0 5px;"
+                               href="@Url.Action("Product", "Product", new { page = Model.PageNumber + 1 })" class="page-link">&gt;</a>
+                        </li>
                     </ul>
                 </div>
+
+
 
             </section>
         </main>
@@ -131,7 +141,20 @@
             });
         });
     </script>
+    <script>
+        function search() {
+            var searchTerm = document.getElementById("searchTerm").value;
 
+            // Redirect to the Index action of your controller with the search term as a query parameter
+            window.location.href = '@Url.Action("Product", "Product")' + '?searchTerm=' + searchTerm;
+        }
+
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                search();
+            }
+        }
+    </script>
  
 </body>
 </html>

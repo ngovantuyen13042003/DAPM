@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Thuy Tram\\Documents\\DAPM\\DAPM\\DAPM\\DAPM\\DAPM.csproj": {}
+    "D:\\Project\\DAPM\\DAPM\\DAPM\\DAPM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Thuy Tram\\Documents\\DAPM\\DAPM\\DAPM\\DAPM\\DAPM.csproj": {
+    "D:\\Project\\DAPM\\DAPM\\DAPM\\DAPM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Thuy Tram\\Documents\\DAPM\\DAPM\\DAPM\\DAPM\\DAPM.csproj",
+        "projectUniqueName": "D:\\Project\\DAPM\\DAPM\\DAPM\\DAPM.csproj",
         "projectName": "DAPM",
-        "projectPath": "C:\\Users\\Thuy Tram\\Documents\\DAPM\\DAPM\\DAPM\\DAPM\\DAPM.csproj",
-        "packagesPath": "C:\\Users\\Thuy Tram\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Thuy Tram\\Documents\\DAPM\\DAPM\\DAPM\\DAPM\\obj\\",
+        "projectPath": "D:\\Project\\DAPM\\DAPM\\DAPM\\DAPM.csproj",
+        "packagesPath": "C:\\Users\\NGOVANTUYEN\\.nuget\\packages\\",
+        "outputPath": "D:\\Project\\DAPM\\DAPM\\DAPM\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Thuy Tram\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\NGOVANTUYEN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

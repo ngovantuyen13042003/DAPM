@@ -1,0 +1,95 @@
+﻿.sidebar {
+    width: 20%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    overflow: hidden;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .logo img {
+        margin-right: 10px;
+    }
+
+    .logo span {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .menu li {
+        position: relative;
+    }
+
+        .menu li a {
+            margin-left: 32px;
+            gap: 10px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            background-color: #f4f4f4;
+            width: 100%;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+            .menu li a img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .menu li a.active,
+            .menu li a:hover {
+                background-color: #007bff;
+                color: white;
+            }
+
+    .menu .dropdown a span i {
+        margin-left: auto; /* Moves the icon to the far right */
+        transition: transform 0.3s; /* Smooth transition for rotation */
+    }
+
+.dropdown-menu {
+    list-style: none;
+    display: none; /* Hide the dropdown menu by default */
+    background-color: #f4f4f4;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+    .dropdown-menu.show {
+        display: block; /* Show the dropdown menu when active */
+    }
+
+    .dropdown-menu li {
+        margin-left: 32px;
+    }
+    .dropdown-menu a {
+     
+        padding: 10px;
+        display: block;
+        text-decoration: none;
+        color: black;
+        white-space: nowrap; /* Ensures text doesn't wrap */
+    }
+
+.dropdown a .angle {
+    transition: transform 0.3s; /* Smooth transition for rotation */
+}
+
+.dropdown a.active .angle {
+    transform: rotate(90deg);
+}

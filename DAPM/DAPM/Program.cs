@@ -22,6 +22,8 @@ builder.Services.AddScoped<UngHoService>();
 builder.Services.AddScoped<DotLuService>();
 builder.Services.AddScoped<DonDKService>();
 builder.Services.AddScoped<ChiTietHangUngHoService>();
+builder.Services.AddScoped<CuuTroService>();
+
 
 
 
