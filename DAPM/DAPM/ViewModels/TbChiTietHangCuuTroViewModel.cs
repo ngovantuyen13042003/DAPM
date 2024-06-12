@@ -5,7 +5,7 @@
         public long IdHangHoa { get; set; }
         public long IdTaiKhoan { get; set; }
         public long IdDotCuuTro { get; set; }
-        public long IdMucDoThietHai { get; set; } // New property
+        public long IdMucDoThietHai { get; set; } 
         public int SoLuong { get; set; }
         public string TenDotLu { get; set; }
         public string TenDotCuuTro { get; set; }

@@ -27,7 +27,7 @@
                 {
                     foreach (var item in Model.Item4)
                     {
-                        <option value="@item.IdDotCuuTro">@item.TenDotCuuTro</option>
+                        <option value="@item.IdDotCuuTro" selected="@(item.IdDotCuuTro == ViewBag.ct)">@item.TenDotCuuTro</option>
                     }
                 }
             </select>
@@ -66,7 +66,7 @@
                         <tr>
                             <td >@a</td>
                             <td >@(item.HoVaTen == "" ? item.TenDangNhap : item.HoVaTen)</td>
-                            <td> @(item.DiaChi == "" ? "" : item.DiaChi) <td>
+                            <td >@(item.DiaChi == "" ? "" : item.DiaChi) <td>
                         </tr>
                     }
                 }
@@ -95,7 +95,7 @@
                 {
                     foreach (var item in Model.Item6)
                     {
-                        <option value="@item.IdHangHoa">@item.TenHangHoa</option>
+                        <option value="@item.IdHangHoa"  selected="@(item.IdHangHoa == ViewBag.hh)">@item.TenHangHoa</option>
                     }
                 }
             </select>
@@ -110,8 +110,8 @@
     </div>
 
     <div class="buttons">
-        <button style="background: #98E0FF" id="save">Lưu</button>
-    <button style="background: #DD4242" @Url.Action("Index", "TbChiTietHangCuuTroes") id="close">Đóng</button>
+        <button style="background: #DD4242"><a href="@Url.Action("Index", "TbChiTietHangCuuTroes")" id="close">Đóng</a></button>
+        <button style="background: #98E0FF" id="save"><a>Lưu</a></button>
     </div>
 
     <script>
@@ -143,48 +143,24 @@
             var selectedValue = document.getElementById("loai-hang-hoa").value;
             var dlFilter = document.getElementById("dot-lu").value;
             var mthFilter = document.getElementById("muc-thiet-hai").value;
+            var selectedHangHoaId = document.getElementById("ten-hang").value;
+            var selectedDotCuuTroId = document.getElementById("dot-cuu-tro").value;
 
-            var url = "/TbChiTietHangCuuTroes/Create?dm_filter=" + encodeURIComponent(selectedValue) + "&dl_filter=" + encodeURIComponent(dlFilter) + "&mth_filter=" + encodeURIComponent(mthFilter);
+            var url = "/TbChiTietHangCuuTroes/Create?dm_filter=" + encodeURIComponent(selectedValue) + "&dl_filter=" + encodeURIComponent(dlFilter) + "&mth_filter=" + encodeURIComponent(mthFilter) + "&ct=" + encodeURIComponent(selectedDotCuuTroId) + "&hang=" + encodeURIComponent(hangId);
 
             window.location.href = url;
         }
     </script>
 
     <script>
-        // Function to set selected value for dropdown
-        function setSelectedValue(selectElementId, valueToSet) {
-            var selectElement = document.getElementById(selectElementId);
-            for (var i = 0; i < selectElement.options.length; i++) {
-                if (selectElement.options[i].value == valueToSet) {
-                    selectElement.options[i].selected = true;
-                    break;
-                }
-            }
-        }
-
-        // Call the function to set selected values for each dropdown
-        window.onload = function () {
-            setSelectedValue("dot-lu", "@ViewBag.dl_filter");
-            setSelectedValue("dot-cuu-tro", "@ViewBag.dl");
-            setSelectedValue("muc-thiet-hai", "@ViewBag.mth_filter");
-            setSelectedValue("loai-hang-hoa", "@ViewBag.dm_filter");
-            setSelectedValue("ten-hang", "@ViewBag.dm");
-        };
-    </script>
-
-    <script>
-        function getSelectedHang() {
-            var selectedHangId = document.getElementById("ten-hang").value;
-            redirectToFilterWithHangId(selectedHangId);
-        }
-
-        function redirectToFilterWithHangId(hangId) {
+        function redirectToFilterWithHangId() {
             var selectedDotLuId = document.getElementById("dot-lu").value;
             var selectedDotCuuTroId = document.getElementById("dot-cuu-tro").value;
             var selectedMucThietHaiId = document.getElementById("muc-thiet-hai").value;
             var selectedDanhMucId = document.getElementById("loai-hang-hoa").value;
+            var selectedHangHoaId = document.getElementById("ten-hang").value;
 
-            var url = "/TbChiTietHangCuuTroes/Create?dl_filter=" + encodeURIComponent(selectedDotLuId) + "&mth_filter=" + encodeURIComponent(selectedMucThietHaiId) + "&dm_filter=" + encodeURIComponent(selectedDanhMucId) + "&dmf=" + encodeURIComponent(selectedDanhMucId) + "&mthf=" + encodeURIComponent(selectedMucThietHaiId) + "&dm=" + encodeURIComponent(hangId);
+            var url = "/TbChiTietHangCuuTroes/Create?dl_filter=" + encodeURIComponent(selectedDotLuId) + "&mth_filter=" + encodeURIComponent(selectedMucThietHaiId) + "&dm_filter=" + encodeURIComponent(selectedDanhMucId)  + "&ct=" + encodeURIComponent(selectedDotCuuTroId) + "&hang=" + encodeURIComponent(hangId);
 
             window.location.href = url;
         }

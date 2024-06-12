@@ -6,6 +6,7 @@
     int counter = 1;
     var currentPage = ViewBag.CurrentPage ?? 1; 
     var totalPages = ViewBag.TotalPages ?? 1; 
+    var searchTerm = ViewBag.SearchTerm as string;
 }
 <style>
     .pagination {
@@ -76,7 +77,7 @@
                     <h2>Quản lý đợt lũ</h2>
                 </div>
                 <div class="search-bar">
-                    <input type="text" id="searchTerm" placeholder="Search" onkeydown="handleSearch(event)">
+                    <input type="text" value="@searchTerm" id="searchTerm" placeholder="Search" onkeydown="handleSearch(event)">
                     <i class="fa fa-search" onclick="search()"></i>
                 </div>
                 <div class="user-info">

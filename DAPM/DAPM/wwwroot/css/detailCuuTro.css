@@ -97,6 +97,10 @@ table {
         cursor: pointer;
     }
 
+    .buttons button a {
+        text-decoration: none
+    }
+
 #save {
     background-color: #98E0FF;
 }

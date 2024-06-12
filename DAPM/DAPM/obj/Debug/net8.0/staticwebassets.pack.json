@@ -277,6 +277,66 @@
       "PackagePath": "staticwebassets\\css\\styles.css"
     },
     {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\ERD.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\ERD.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\ERDDiagram1.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\ERDDiagram1.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh1.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh1.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh10.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh10.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh11.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh11.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh12.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh12.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh13.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh13.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh2.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh2.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh3.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh3.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh4.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh4.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh5.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh5.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh6.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh6.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh7.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh7.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh8.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh8.jpg"
+    },
+    {
+      "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\dotlu\\hinhanh9.jpg",
+      "PackagePath": "staticwebassets\\dotlu\\hinhanh9.jpg"
+    },
+    {
       "Id": "D:\\Project\\DAPM\\DAPM\\DAPM\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

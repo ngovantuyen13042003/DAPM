@@ -26,6 +26,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Project\DAPM\DAPM\DAPM
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Project/DAPM/DAPM/DAPM/Views/BAIDANG/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQkFJREFOR1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project/DAPM/DAPM/DAPM/Views/BAIDANG/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQkFJREFOR1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project/DAPM/DAPM/DAPM/Views/BAIDANG/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQkFJREFOR1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project/DAPM/DAPM/DAPM/Views/BAIDANG/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQkFJREFOR1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project/DAPM/DAPM/DAPM/Views/BAIDANG/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQkFJREFOR1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Project/DAPM/DAPM/DAPM/Views/CAPNHATTHIETHAI/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ0FQTkhBVFRISUVUSEFJXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

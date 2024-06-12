@@ -3,8 +3,9 @@
     Layout = null;
     ViewData["Title"] = "Cập nhật thiệt hại";
     int counter = 1;
-    var currentPage = ViewBag.CurrentPage ?? 1; // Default to page 1 if not set
-    var totalPages = ViewBag.TotalPages ?? 1; // Default to 1 if not set
+    var currentPage = ViewBag.CurrentPage ?? 1;
+    var totalPages = ViewBag.TotalPages ?? 1; 
+    var searchTerm = ViewBag.SearchTerm as string;
 }
 <style>
    .pagination {
@@ -78,7 +79,7 @@
                     <h2>Cập nhật thiệt hại</h2>
                 </div>
                 <div class="search-bar">
-                    <input type="text" id="searchTerm" placeholder="Search" onkeydown="handleSearch(event)">
+                    <input type="text" id="searchTerm" value="@searchTerm" placeholder="Search" onkeydown="handleSearch(event)">
                     <i class="fa fa-search" onclick="search()"></i>
                 </div>
 
