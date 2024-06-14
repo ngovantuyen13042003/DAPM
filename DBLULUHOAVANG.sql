@@ -231,10 +231,10 @@ SET DATEFORMAT dmy
 INSERT INTO tbDotLu (tenDotLu, ngayBatDau, ngayKetThuc)
 VALUES
     (N'Đợt lũ 1', '15/5/2023', '30/5/2023'),
-    (N'Đợt lũ 2', '10/6/2023', '25/6/2023'),
-    (N'Đợt lũ 3', '5/7/2023', '20/7/2023'),
-    (N'Đợt lũ 4', '1/8/2023', '15/8/2023'),
-    (N'Đợt lũ 5', '20/8/2023', '5/9/2023')
+    (N'Đợt lũ 2', '10/6/2022', '25/6/2022'),
+    (N'Đợt lũ 3', '5/7/2021', '20/7/2021'),
+    (N'Đợt lũ 4', '1/8/2020', '15/8/2020'),
+    (N'Đợt lũ 5', '20/8/2024', '5/9/2024')
 
 
 --tbBaiDang
@@ -277,28 +277,28 @@ values
     (N'Mỳ tôm hảo hảo', 500, null,'Thùng',1)
 
 	UPDATE tbHangHoa 
-SET tenHangHoa = N'Tiền', soLuong = 100000000, mota = null, donViTinh = 'VND', idDanhMuc = 4 
-WHERE idHangHoa = 1;
+SET tenHangHoa = N'Tiền', soLuong = 100000000, mota = N'Tiền Việt Nam', donViTinh = 'VND', idDanhMuc = 4 
+WHERE idHangHoa = 21;
 
 UPDATE tbHangHoa 
-SET tenHangHoa = N'Gạo', soLuong = 100, mota = null, donViTinh = 'KG', idDanhMuc = 1 
-WHERE idHangHoa = 2;
+SET tenHangHoa = N'Gạo', soLuong = 100, mota = N'Gạo siêu ngon', donViTinh = 'KG', idDanhMuc = 1 
+WHERE idHangHoa = 22;
 
 UPDATE tbHangHoa 
-SET tenHangHoa = N'Nước đóng chai', soLuong = 200, mota = null, donViTinh = 'Lít', idDanhMuc = 2 
-WHERE idHangHoa = 3;
+SET tenHangHoa = N'Nước đóng chai', soLuong = 200, mota = N'Nước uống lavi', donViTinh = 'Lít', idDanhMuc = 2 
+WHERE idHangHoa = 23;
 
 UPDATE tbHangHoa 
 SET  mota = N'size từ 10kg đến 90kg' 
-WHERE idHangHoa = 4;
+WHERE idHangHoa = 24;
 
 UPDATE tbHangHoa 
 SET  mota = N'Thuốc paracetamal' 
-WHERE idHangHoa = 5;
+WHERE idHangHoa = 25;
 
 UPDATE tbHangHoa 
 SET mota = N'Mì tôm hảo hảo'
-WHERE idHangHoa = 6;
+WHERE idHangHoa = 26;
 
 SELECT * FROM tbHangHoa
 
@@ -341,11 +341,11 @@ values
 --tbChiTietMucDoThietHai
 insert into tbChiTietMucDoThietHai (idMucDo, idTaiKhoan, idDotLu,mota)
 values 
-    (1, 1, 1,N'Ngập lụt 1m'),
-    (2, 2, 1,N'Nhà tốc mái'),
-    (2, 3, 2,N'Mất 1 phần hoa màu'),
-    (3, 4, 3,N'Ngập lụt, mất 2 hecta lúa'),
-    (4, 5, 4,N'Nhà tốc mái hêt, sập 1 bên tường, chết 2 con heo do lũ cuốn')
+    (1, 41, 1,N'Ngập lụt 1m'),
+    (2, 42, 5,N'Nhà tốc mái'),
+    (5, 43, 2,N'Mất 1 phần hoa màu'),
+    (3, 44, 3,N'Ngập lụt, mất 2 hecta lúa'),
+    (4, 45, 4,N'Nhà tốc mái hêt, sập 1 bên tường, chết 2 con heo do lũ cuốn')
 
 --tbThongBao
 insert into tbThongBao (noiDung, ngayDang, idTaiKhoan)

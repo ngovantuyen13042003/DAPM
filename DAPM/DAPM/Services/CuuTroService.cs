@@ -46,15 +46,31 @@ namespace DAPM.Services
             return result;
         }
 
-        public List<TbTaiKhoan> filterTaiKhoan(long? mucThietHai)
+        public List<TbTaiKhoan> filterTaiKhoan(long? mucThietHai, long? dotlu, long dc)
         {
-            var result = (from md in context.TbMucDoThietHais
-                          join ct in context.TbChitietMucDoThietHais on md.IdMucDo equals ct.IdMucDo
-                          join tk in context.TbTaiKhoans on ct.IdTaiKhoan equals tk.IdTaiKhoan
-                          where md.IdMucDo == mucThietHai
-                           select tk 
+            var dct = context.TbDotCuuTros.FirstOrDefault(dct => dct.IdDotCuuTro == dc);
+            if (dct != null)
+            {
+                var result = (from ct in context.TbChitietMucDoThietHais
+                              join md in context.TbMucDoThietHais on ct.IdMucDo equals md.IdMucDo
+                              join tk in context.TbTaiKhoans on ct.IdTaiKhoan equals tk.IdTaiKhoan
+                              join dl in context.TbDotLus on ct.IdDotLu equals dotlu
+                              where md.IdMucDo == mucThietHai && dct.IdDotLu == dl.IdDotLu && ct.IdDotLu == dotlu
+                              select tk
                          ).Distinct().ToList();
-            return result;
+                return result;
+            }else
+            {
+                var result = (from ct in context.TbChitietMucDoThietHais
+                              join md in context.TbMucDoThietHais on ct.IdMucDo equals md.IdMucDo
+                              join tk in context.TbTaiKhoans on ct.IdTaiKhoan equals tk.IdTaiKhoan
+                              join dl in context.TbDotLus on ct.IdDotLu equals dotlu
+                              where md.IdMucDo == mucThietHai && ct.IdDotLu == dotlu
+                              select tk
+                         ).Distinct().ToList();
+                return result;
+            }
+            
         }
 
 

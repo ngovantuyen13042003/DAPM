@@ -16,42 +16,41 @@ namespace DAPM.Controllers
     {
         private readonly Data.DbLuLutHoaVangContext _context;
         private readonly CuuTroService cuuTroService;
+        private readonly HangHoaService hangHoaService;
 
-        public TbChiTietHangCuuTroesController(Data.DbLuLutHoaVangContext context, CuuTroService cuuTroService)
+        public TbChiTietHangCuuTroesController(Data.DbLuLutHoaVangContext context, CuuTroService cuuTroService, HangHoaService hangHoaService)
         {
             _context = context;
             this.cuuTroService = cuuTroService;
+            this.hangHoaService = hangHoaService;
         }
 
         // GET: TbChiTietHangCuuTroes
+
         public async Task<IActionResult> Index(int? page)
         {
             int pageSize = 10;
             int pageNumber = page ?? 1;
 
+            var result = _context.TbChiTietHangCuuTros
+                .Select(cthct => new TbChiTietHangCuuTroViewModel
+                {
+                    IdHangHoa = cthct.IdHangHoa,
+                    IdTaiKhoan = cthct.IdTaiKhoan,
+                    IdDotCuuTro = cthct.IdDotCuuTro,
+                    SoLuong = cthct.SoLuong,
+                    TenDotLu = cthct.IdDotCuuTroNavigation.IdDotLuNavigation.TenDotLu,
+                    TenDotCuuTro = cthct.IdDotCuuTroNavigation.TenDotCuuTro,
+                    TenMucDoThietHai = cthct.IdTaiKhoanNavigation.TbChitietMucDoThietHais
+                                        .Where(ctmtd => ctmtd.IdDotLu == cthct.IdDotCuuTroNavigation.IdDotLu)
+                                        .Select(ctmtd => ctmtd.IdMucDoNavigation.MucThietHai)
+                                        .FirstOrDefault(),
+                    TenHangHoa = cthct.IdHangHoaNavigation.TenHangHoa,
+                    TenTaiKhoan = cthct.IdTaiKhoanNavigation.HoVaTen
+                }).ToList();
 
-            var result = from cthct in _context.TbChiTietHangCuuTros
-                         join hh in _context.TbHangHoas on cthct.IdHangHoa equals hh.IdHangHoa
-                         join dct in _context.TbDotCuuTros on cthct.IdDotCuuTro equals dct.IdDotCuuTro
-                         join dl in _context.TbDotLus on dct.IdDotLu equals dl.IdDotLu
-                         join ctmtd in _context.TbChitietMucDoThietHais on cthct.IdTaiKhoan equals ctmtd.IdTaiKhoan
-                         join mdt in _context.TbMucDoThietHais on ctmtd.IdMucDo equals mdt.IdMucDo
-                         select new TbChiTietHangCuuTroViewModel
-                         {
-                             IdHangHoa = cthct.IdHangHoa,
-                             IdTaiKhoan = cthct.IdTaiKhoan,
-                             IdDotCuuTro = cthct.IdDotCuuTro,
-                             SoLuong = cthct.SoLuong,
-                             TenDotLu = dl.TenDotLu,
-                             TenDotCuuTro = dct.TenDotCuuTro,
-                             TenMucDoThietHai = mdt.MucThietHai,
-                             TenHangHoa = hh.TenHangHoa,
-                             TenTaiKhoan = cthct.IdTaiKhoanNavigation.HoVaTen
-                         };
 
-            var resultList = await result.ToListAsync();
-            PagedList<TbChiTietHangCuuTroViewModel> pagination = new PagedList<TbChiTietHangCuuTroViewModel>(resultList, pageNumber, pageSize);
-
+            PagedList<TbChiTietHangCuuTroViewModel> pagination = new PagedList<TbChiTietHangCuuTroViewModel>(result, pageNumber, pageSize);
 
             return View(pagination);
         }
@@ -90,15 +89,13 @@ namespace DAPM.Controllers
 
 
 
-
-        // GET: TbChiTietHangCuuTroes/Create
-        public IActionResult Create(long? dl_filter, long? mth_filter, long? dm_filter, long? ct,  long? hang)
+        [HttpGet]
+        public IActionResult Create(long? dl_filter, long? mth_filter, long? dm_filter, long ct)
         {
             var dl = _context.TbDotLus.ToList();
             var dm = cuuTroService.getAllDanhMuc();
             ViewBag.ct = ct;
             var mth = cuuTroService.getAllMucThietHai();
-            ViewBag.hh = hang;
 
             List<TbDotCuuTro> dct = null;
             List<TbTaiKhoan> tk = null;
@@ -112,7 +109,7 @@ namespace DAPM.Controllers
 
             if (mth_filter != null)
             {
-                tk = cuuTroService.filterTaiKhoan(mth_filter);
+                tk = cuuTroService.filterTaiKhoan(mth_filter, dl_filter, ct);
                 ViewBag.mth_filter = mth_filter;
             }
 
@@ -127,6 +124,50 @@ namespace DAPM.Controllers
             return View(data);
         }
 
+
+
+
+        // POST: TbChiTietHangCuuTroes/Create
+        [HttpPost]
+        public IActionResult Create(ChiTietCuuTroModelView chiTietCuuTroModelView)
+        {
+            var product = _context.TbHangHoas.FirstOrDefault(hh => hh.IdHangHoa == chiTietCuuTroModelView.HangHoaId);
+
+            var users = cuuTroService.filterTaiKhoan(chiTietCuuTroModelView.MucThietHaiId, chiTietCuuTroModelView.DotLuId, chiTietCuuTroModelView.DotCuuTroId);
+            TempData["ErrorQuantity"] = "";
+
+            if ((product?.SoLuong) < (users.Count * chiTietCuuTroModelView.SoLuong))
+            {
+                TempData["ErrorQuantity"] = "Số lượng nhập vượt quá số lượng hàng hóa còn lại!";
+                return RedirectToAction("Create", "TbChiTietHangCuuTroes");
+            }
+            else
+            {
+
+                product.SoLuong -= users.Count * chiTietCuuTroModelView.SoLuong;
+                hangHoaService.Edit(product);
+
+                List<TbChiTietHangCuuTro> detail = new List<TbChiTietHangCuuTro>();
+
+                foreach (var user in users)
+                {
+                    var chiTietHangCuuTro = new TbChiTietHangCuuTro
+                    {
+                        IdDotCuuTro = chiTietCuuTroModelView.DotCuuTroId,
+                        IdHangHoa = chiTietCuuTroModelView.HangHoaId,
+                        SoLuong = chiTietCuuTroModelView.SoLuong,
+                        IdTaiKhoan = user.IdTaiKhoan 
+                    };
+
+                    detail.Add(chiTietHangCuuTro);
+                }
+
+                _context.AddRange(detail);
+                _context.SaveChanges();
+            }
+            TempData["ErrorQuantity"] = "Thêm hàng cứu trợ thành công!";
+            return RedirectToAction("Create", "TbChiTietHangCuuTroes");
+        }
 
 
 

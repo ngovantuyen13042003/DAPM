@@ -15,7 +15,7 @@
         <li><a href="@Url.Action("Index", "TaiKhoans")"><img src="/img/taikhoan.png" alt="Account"> Quản lý tài khoản</a></li>
         <li><a href="@Url.Action("Index","DOTLU")"><img src="/img/dotlu.png" alt="Flood"> Quản lý đợt lũ</a></li>
         <li><a href="@Url.Action("Index", "DanhMucs")"><img src="/img/danhmuc.png" alt="Category"> Danh mục hàng hóa</a></li>
-        <li><a href="@Url.Action("Index","UngHo")"><img src="/img/ungho.png" alt="Support"> Quản lý ủng hộ</a></li>
+        
 
         <li class="dropdown">
             <a href="javascript:void(0);" class="dropdown-toggle">
@@ -31,6 +31,18 @@
 
         <li class="dropdown">
             <a href="javascript:void(0);" class="dropdown-toggle">
+                <img src="/img/ungho.png" alt="Rescue">
+                <span>Quản lý Ủng hộ</span>
+                <span><i class="fa-solid fa-angle-down angle"></i></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a style="margin-left: 32px;" href="@Url.Action("Product", "Product")">Cập nhật hàng ủng hộ</a></li>
+                <li><a href="@Url.Action("Index","UngHo")"> Đăng ký ủng hộ</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="javascript:void(0);" class="dropdown-toggle">
                 <img src="/img/cuutro.png" alt="Rescue">
                 <span>Quản lý cứu trợ</span>
                 <span><i class="fa-solid fa-angle-down angle"></i></span>
@@ -40,7 +52,7 @@
                 <li><a style="margin-left: 32px;" href="@Url.Action("Index","TbChiTietHangCuuTroes")">Phân bổ cứu trợ</a></li>
             </ul>
         </li>
-        <li><a href="#"><img src="/img/thongke.png" alt="Report"> Thống kê & báo cáo</a></li>
+        <li><a href="https://app.powerbi.com/reportEmbed?reportId=cf6a5352-a792-4086-b234-381b5ad59d06&autoAuth=true&ctid=28812fc8-2582-42f8-8f32-677ea3e632e4"><img src="/img/thongke.png" alt="Report"> Thống kê & báo cáo</a></li>
     </ul>
 </div>
 
