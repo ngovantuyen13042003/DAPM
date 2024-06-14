@@ -27,7 +27,7 @@ namespace DAPM.Controllers
             int pageSize = 10;
             int pageNumber = page ?? 1;
 
-            var lisCuuTro =  _context.TbDotCuuTros.Include(t => t.IdDotLuNavigation);
+            var lisCuuTro =  _context.TbDotCuuTros.Include(t => t.IdDotLuNavigation).OrderByDescending(t=>t.NgayBatDau);
 
             PagedList<TbDotCuuTro> pagination = new PagedList<TbDotCuuTro>(lisCuuTro, pageNumber, pageSize);
 

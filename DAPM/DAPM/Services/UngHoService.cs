@@ -31,7 +31,7 @@ namespace DAPM.Services
                             fullname = tk.HoVaTen,
                             IdDotLu = don.IdDotLu,
                             tenDotLu = dl.TenDotLu
-                        }).ToList();
+                        }).OrderByDescending(t => t.NgayDk).ToList();
             return list;
         }
 

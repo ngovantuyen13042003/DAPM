@@ -14,7 +14,7 @@ namespace DAPM.Controllers
         }
         public async Task<IActionResult> Index(string searchTerm, int page = 1, int pageSize = 7)
         {
-            IQueryable<TbDotLu> query = _context.TbDotLus.AsQueryable();
+            IQueryable<TbDotLu> query = _context.TbDotLus.AsQueryable().OrderByDescending(t=>t.NgayBatDau);
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
